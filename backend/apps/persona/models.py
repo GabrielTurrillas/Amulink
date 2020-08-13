@@ -28,6 +28,7 @@ class Paciente(Persona):
     nombreContactoEmergencia = models.CharField(max_length=100)
     telefonoContactoEmergencia = models.CharField(max_length=100)
     emailContactoEmergencia = models.CharField(max_length=100)
+    tienePsiquiatra = models.BooleanField()
     nombrePsiquiatra = models.CharField(max_length=100)
     emailPsiquiatra = models.CharField(max_length=100)
 
