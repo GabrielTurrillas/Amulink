@@ -32,17 +32,21 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #mias
+    'apps.cuentas',
+    'apps.paciente',
+    'apps.terapeuta',
+    'apps.terapia',
+
+    #librarias y django
+    'rest_framework',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
-    'rest_framework',
-    'apps.paciente',
-    'apps.terapeuta',
-    'apps.terapia',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +77,7 @@ TEMPLATES = [
         },
     },
 ]
+AUTH_USER_MODEL = 'cuentas.Cuenta'
 
 WSGI_APPLICATION = 'Amulink.wsgi.application'
 
