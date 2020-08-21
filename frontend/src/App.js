@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import PacienteList from './components/PacienteList';
+import PacienteLista from './components/PacienteLista';
 
+import './App.css';
+import axios from 'axios';
 
 
 class App extends Component {
+    state = {
+        pacientes: []
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:8000/api/paciente/')
+            .then(response => this.setState({ pacientes: response.data }))
+    }
+
     render() {
         return(
             <div className="App">
-                <PacienteList />
+                <PacienteLista pacientes={this.state.pacientes}/>
             </div>
         );
     }
