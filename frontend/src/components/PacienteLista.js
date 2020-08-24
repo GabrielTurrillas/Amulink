@@ -1,21 +1,16 @@
-import React, { Component } from 'react';
-import PacienteItem from './PacienteItem'
-import PropTypes from 'prop-types';
-import PacienteList from './PacienteList';
+import React, { useState, useContext, Fragment } from 'react';
+import Paciente from './Paciente';
+import { PacienteContext } from './PacienteContext';
 
-
-class PacienteLista extends Component {
-    render() {
-        return this.props.pacientes.map((paciente) => (
-        <PacienteItem key={paciente.id} paciente={paciente} />
-        ));
-    }
+const PacienteLista = () => {
+    const [pacientes, setPacientes] = useContext(PacienteContext)
+    return(
+        <Fragment>
+            {pacientes.map(paciente => (
+                <Paciente key={paciente.id} nombre={paciente.nombre} apellidoMaterno={paciente.apellidoMaterno} email={paciente.email} />
+            ))}
+        </Fragment>
+    );
 }
-
-
-PacienteList.propTypes = {
-    paciente: PropTypes.array.isRequired
-}
-
 
 export default PacienteLista;

@@ -1,28 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react'; 
+//import { BrouserRouter as Router, Route, Switch} from "react-router-dom";
+import Nav from './components/Nav';
 import PacienteLista from './components/PacienteLista';
+import AgregarPaciente from './components/AgregarPaciente'
+import { PacienteProvider } from './components/PacienteContext';
 
-import './App.css';
-import axios from 'axios';
 
-
-class App extends Component {
-    state = {
-        pacientes: []
-    }
-
-    componentDidMount() {
-        axios.get('http://localhost:8000/api/paciente/')
-            .then(response => this.setState({ pacientes: response.data }))
-    }
-
-    render() {
-        return(
+function App() {
+    return (
+        <PacienteProvider>
             <div className="App">
-                <PacienteLista pacientes={this.state.pacientes}/>
+                <Nav />
+                <AgregarPaciente />
+                <PacienteLista />
             </div>
-        );
-    }
+        </PacienteProvider>
+    );
 }
-
 
 export default App;
