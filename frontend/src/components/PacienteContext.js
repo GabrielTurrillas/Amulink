@@ -12,7 +12,6 @@ export const PacienteProvider = (props) => {
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result)
                     setIsLoaded(true);
                     setPacientes(result);
                 },

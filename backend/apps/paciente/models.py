@@ -13,7 +13,6 @@ class Paciente(models.Model):
     direccion = models.CharField(max_length=100)
     comunaResidencia = models.CharField(max_length=100) #hacerla con opciones
     ocupacionProfecion = models.CharField(max_length=50)
-    fechaNacimiento = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.nombre
