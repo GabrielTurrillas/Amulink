@@ -1,20 +1,18 @@
 import React from 'react'; 
-//import { BrouserRouter as Router, Route, Switch} from "react-router-dom";
-import Nav from './components/Nav';
-import PacienteLista from './components/PacienteLista';
-import AgregarPaciente from './components/AgregarPaciente'
-import { PacienteProvider } from './components/PacienteContext';
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Pacientes from './containers/Pacientes'
+
 
 
 function App() {
     return (
-        <PacienteProvider>
-            <div className="App">
-                <Nav />
-                <AgregarPaciente />
-                <PacienteLista />
-            </div>
-        </PacienteProvider>
+        <div className="App">
+            <Router>
+                <Switch>
+                    <Route exact path='/pacientes' component={Pacientes}/>
+                </Switch>
+            </Router>
+        </div>
     );
 }
 
