@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
-import Paciente from './Paciente';
-import { PacienteContext } from './PacienteContext';
+import { PacienteContext } from './pacientes/PacienteContext';
 
 const Nav = () => {
     const [pacientes, setPacientes] = useContext(PacienteContext);

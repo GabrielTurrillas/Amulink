@@ -1,8 +1,8 @@
 import React, { Fragment }  from 'react';
 import Nav from '../components/Nav';
-import PacienteLista from '../components/PacienteLista';
-import AgregarPaciente from '../components/AgregarPaciente'
-import { PacienteProvider } from '../components/PacienteContext';
+import AgregarPaciente from '../components/pacientes/AgregarPaciente'
+import { PacienteProvider } from '../components/pacientes/PacienteContext';
+import PacienteLista from '../components/pacientes/PacienteLista';
 
 const Pacientes = () => {
     return (
