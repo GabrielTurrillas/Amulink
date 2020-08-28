@@ -7,8 +7,8 @@ import PacienteLista from '../components/pacientes/PacienteLista';
 const Pacientes = () => {
     return (
         <Fragment>
+            <Nav />
             <PacienteProvider>
-                <Nav />
                 <AgregarPaciente />
                 <PacienteLista />
             </PacienteProvider>

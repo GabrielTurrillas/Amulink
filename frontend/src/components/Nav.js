@@ -1,12 +1,9 @@
-import React, {useContext} from 'react';
-import { PacienteContext } from './pacientes/PacienteContext';
+import React from 'react';
 
 const Nav = () => {
-    const [pacientes, setPacientes] = useContext(PacienteContext);
-
     return (
         <nav>
-            <h3>numero de pacientes: {pacientes.length}</h3>
+            <h3>Navigation bar</h3>
         </nav>
     );
 };
