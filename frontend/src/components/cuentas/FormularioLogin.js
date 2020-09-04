@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
 
 const FormularioLogin = () => {
     const { register, handleSubmit, errors } = useForm();
@@ -9,7 +9,7 @@ const FormularioLogin = () => {
             method:'POST',
             body: JSON.stringify(data),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             }
         }).then(res => res.json())
         .catch(error => console.error('Error:', error))
@@ -27,7 +27,7 @@ const FormularioLogin = () => {
                 })}
             /> <br/> {errors.rut && <p>{errors.rut.message}</p>} <br/>
             <input
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Password"
                 ref={register({

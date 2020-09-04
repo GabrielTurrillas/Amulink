@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Paciente
 from .serializers import PacienteSerializer
 
-@permission_classes((IsAuthenticated, ))
+""" @permission_classes((IsAuthenticated, )) """
 class PacienteListCreateView(ListCreateAPIView):
     queryset = Paciente.objects.all()
     serializer_class = PacienteSerializer

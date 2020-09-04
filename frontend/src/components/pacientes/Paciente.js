@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
+import { useSelector } from 'react-redux';
 
-
-const Paciente = ({ nombre, apellidoMaterno, email }) => {
+const Paciente = () => {    
+    
 
     return(
         <Fragment>
@@ -10,4 +11,4 @@ const Paciente = ({ nombre, apellidoMaterno, email }) => {
     );
 }
 
-export default Paciente;
+export default Paciente

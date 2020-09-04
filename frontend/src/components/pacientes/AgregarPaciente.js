@@ -1,10 +1,8 @@
-import React, { useState, useContext } from 'react';
-import { PacienteContext } from './PacienteContext';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 const AgregarPaciente = () => {
-    const [pacientes, setPacientes] = useContext(PacienteContext);
-
+    const [pacientes, setPacientes] = useState([]) 
     const {register, handleSubmit, errors} = useForm();
 
     const onSubmit = (data) => {
