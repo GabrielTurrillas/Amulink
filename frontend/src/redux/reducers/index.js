@@ -24,7 +24,7 @@ const pacientesReducer = (state=initialState, action) => {
                 ...state,
                 pacientes: action.payload,
                 loading: false,
-                errors: []
+                errors: ''
             }
         case FETCH_PACIENTES_FAILURE:
             return {

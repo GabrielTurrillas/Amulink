@@ -24,29 +24,10 @@ const PacienteLista = () => {
                     </div>
                 )
             })}
-            {errors ? errors.map(err => <p>{err}</p>): <></>}
+            {errors ? <p>{errors}</p> : <></>}
         </Fragment>
     ) 
 }
 
 export default PacienteLista;
 
-
-/*             {pacientes.map((paciente) => {
-                return (
-                    <div key={paciente.id}>
-                        <p>
-                            {paciente.nombre} {paciente.apellidoPaterno}
-                        </p>
-                    </div>
-                )
-            })} */
-
-/* const mapStateToProps = state => ({
-    pacientes: state.pacientes.pacientes
-})
-
-PacienteLista.propTypes = {
-    pacientes: propTypes.array.isRequired
-}
-*/
