@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signup } from '../redux/actions/auth'
+import { signup } from '../../redux/actions/auth'
 
 const Signup = ({ signup, isAuthenticated }) => { 
     const [accountCreated, setAccountCreated] = useState(false);

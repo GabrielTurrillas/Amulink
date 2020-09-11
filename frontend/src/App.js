@@ -1,14 +1,13 @@
 import React from 'react'; 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Pacientes from './containers/Pacientes';
-import Registro from './containers/Registro';
+import Pacientes from './containers/pacientes/Pacientes';
 
 import Home from './containers/Home';
-import Login from './containers/Login';
-import Signup  from './containers/Signup';
-import Activate from './containers/Activate';
-import ResetPassword from './containers/ResetPassword';
-import ResetPasswordConfirm from './containers/ResetPasswordConfirm';
+import Login from './containers/accounts/Login';
+import Signup  from './containers/accounts/Signup';
+import Activate from './containers/accounts/Activate';
+import ResetPassword from './containers/accounts/ResetPassword';
+import ResetPasswordConfirm from './containers/accounts/ResetPasswordConfirm';
 
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -27,7 +26,6 @@ const App = () => (
                     <Route exact path='/reset-password' component={ResetPassword} />
                     <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                     <Route exact path='/activate/:uid/:token' component={Activate} />
-                    <Route exact path='/registro' component={Registro} />
                 </Switch>
             </Layout>
         </Router>
