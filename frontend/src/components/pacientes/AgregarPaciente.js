@@ -1,28 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { load_user } from '../../redux/actions/auth';
+import { agregarPacientes } from '../../redux/actions/pacientes'
 
 const AgregarPaciente = () => {
-    const [pacientes, setPacientes] = useState([]) 
     const {register, handleSubmit, errors} = useForm();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        load_user(); //revisar que pasa si no esta logeado el usuario
+    }, [])
 
     const onSubmit = (data) => {
-        setPacientes(prevPacientes => [...prevPacientes, data])
-        fetch('http://127.0.0.1:8000/api/paciente/', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json())
-        .catch(error => console.error('Error:', error))
-        .then(response => console.log('Response:', response))
+        dispatch(agregarPacientes(data))
     };
-
-    
-    /*     const agregarPaciente = e => {
-        e.preventDefault();
-        setPacientes(prevPacientes => [...prevPacientes, { nombre: nombre, apellidoMaterno: apellidoMaterno, email: email }])
-    }; */
     
     return(
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -33,7 +25,7 @@ const AgregarPaciente = () => {
                 ref={register({
                     required:'Campo "Rut" obligatorio',
                 })}
-            /> <br/> {errors.rut && <p>{errors.rut.message}</p>} <br/>
+                /> <br/> {errors.rut && <p>{errors.rut.message}</p>} <br/>
             <input
                 type="text"
                 name="nombre" 
@@ -42,7 +34,7 @@ const AgregarPaciente = () => {
                     required: 'Campo "nombre" obligatorio',
                     minLength: {value: 2, message: 'campo "nombre" debe tener mas de 1 caracter'}
                 })}
-            /> <br/> {errors.nombre && <p>{errors.nombre.message}</p>} <br/>
+                /> <br/> {errors.nombre && <p>{errors.nombre.message}</p>} <br/>
             <input 
                 type="text"
                 name="apellidoPaterno" 
@@ -50,7 +42,7 @@ const AgregarPaciente = () => {
                 ref={register({
                     required:'Campo "Apellido Paterno" obligatorio',
                 })}
-            /> <br/> {errors.apellidoPaterno && <p>{errors.apellidoPaterno.message}</p>} <br/>
+                /> <br/> {errors.apellidoPaterno && <p>{errors.apellidoPaterno.message}</p>} <br/>
             <input 
                 type="text" 
                 name="apellidoMaterno" 
@@ -59,7 +51,7 @@ const AgregarPaciente = () => {
                     required:'Campo "Apellido Materno" obligatorio',
                     minLength: {value: 2, message: 'campo "Apellido Materno" debe tener mas de 1 caracter'}
                 })}
-            /> <br/> {errors.apellidoMaterno && <p>{errors.apellidoMaterno.message}</p>} <br/>
+                /> <br/> {errors.apellidoMaterno && <p>{errors.apellidoMaterno.message}</p>} <br/>
             <input 
                 type="text"
                 name="telefono" 
@@ -67,7 +59,7 @@ const AgregarPaciente = () => {
                 ref={register({
                     required:'Campo "Telefono" obligatorio',
                 })}
-            /> <br/> {errors.telefono && <p>{errors.telefono.message}</p>} <br/>
+                /> <br/> {errors.telefono && <p>{errors.telefono.message}</p>} <br/>
             <input 
                 type="text"
                 name="email" 
@@ -83,7 +75,7 @@ const AgregarPaciente = () => {
                 ref={register({
                     required:'Campo "Genero" obligatorio',
                 })}
-            /> <br/> {errors.genero && <p>{errors.genero.message}</p>} <br/>
+                /> <br/> {errors.genero && <p>{errors.genero.message}</p>} <br/>
             <input 
                 type="text"
                 name="direccion" 
@@ -91,7 +83,7 @@ const AgregarPaciente = () => {
                 ref={register({
                     required:'Campo "Direccion" obligatorio',
                 })}
-            /> <br/> {errors.direccion && <p>{errors.direccion.message}</p>} <br/>
+                /> <br/> {errors.direccion && <p>{errors.direccion.message}</p>} <br/>
             <input 
                 type="text"
                 name="comunaResidencia" 
@@ -99,7 +91,7 @@ const AgregarPaciente = () => {
                 ref={register({
                     required:'Campo "Comuna de residencia" obligatorio',
                 })}
-            /> <br/> {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>} <br/>
+                /> <br/> {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>} <br/>
             <input 
                 type="text"
                 name="ocupacionProfecion" 
@@ -107,10 +99,29 @@ const AgregarPaciente = () => {
                 ref={register({
                     required:'Campo "Ocupacion o Profecion" obligatorio',
                 })}
-            /> <br/> {errors.ocupacionProfecion && <p>{errors.ocupacionProfecion.message}</p>} <br/>
+                /> <br/> {errors.ocupacionProfecion && <p>{errors.ocupacionProfecion.message}</p>} <br/>
             <button>Submit</button>
         </form>
     );
 };
 
 export default AgregarPaciente;
+
+
+
+
+
+
+
+/*        
+onSubmit
+setPacientes(prevPacientes => [...prevPacientes, data])
+        fetch('http://127.0.0.1:8000/api/paciente/', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Response:', response)) */

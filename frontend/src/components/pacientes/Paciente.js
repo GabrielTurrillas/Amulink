@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react';
-import { useSelector } from 'react-redux';
 
-const Paciente = () => {    
-    
-
+const Paciente = ({nombre, apellidoPaterno, email}) => {    
     return(
         <Fragment>
-            <h3>[{nombre} {apellidoMaterno}] email: {email}</h3>
+            nombre: {nombre} apellido: {apellidoPaterno} email: {email}
         </Fragment>
     );
 }
 
 export default Paciente
+
+

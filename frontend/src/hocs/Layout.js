@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import { checkAuthenticated, load_user } from '../redux/actions/auth'
 
 const Layout = (props) => {
+    const {checkAuthenticated, load_user} = props
     useEffect(() => {
-        props.checkAuthenticated();
-        props.load_user();
-    }, [])
+        checkAuthenticated();
+        load_user();
+    }, [checkAuthenticated, load_user])
 
     return(
         <div>

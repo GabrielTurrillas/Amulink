@@ -1,38 +1,38 @@
-import React, { Fragment, useEffect } from 'react';
-import { useDispatch, connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchPacientes } from '../../redux/actions/pacientes';
-import { checkAuthenticated, load_user } from '../../redux/actions/auth'
+import { load_user } from '../../redux/actions/auth';
+import Paciente from '../../components/pacientes/Paciente';
 
-const PacienteLista = (pacientes) => {
+
+const PacienteLista = () => {
     const dispatch = useDispatch();
-    
+    const pacientes = useSelector(state => state.pacientesReducer.pacientes)
+
     useEffect(() => {
         load_user();
         dispatch(fetchPacientes());
     }, [dispatch])
     
-
+    if (!pacientes || !pacientes.length) {
+        return (
+            <p>NO HAY PACIENTES</p>
+        ) 
+    }
     return (
-        <div>
-            {console.log(pacientes)}
-        </div>
+        <ul>
+            {pacientes.map(({ id, nombre, apellidoPaterno, email }) =>
+                <div key={id}>
+                    <Paciente 
+                        nombre={nombre} 
+                        apellidoPaterno={apellidoPaterno} 
+                        email={email}
+                    />
+                </div>
+            )}
+        </ul>
     ) 
 }
 
-const mapStateToProps = state => ({
-    pacientes: state.pacientesReducer.pacientes
-}) 
+export default PacienteLista;
 
-export default connect(mapStateToProps,{})(PacienteLista);
-
-
-/* { loading ? 'Cargando pacientes...' : pacientes.map((paciente) => {
-    return (
-        <div key={paciente.id}>
-            <p>
-                {paciente.nombre} {paciente.apellidoPaterno}
-            </p>
-        </div>
-    )
-})}
-{errors ? <p>{errors}</p> : <></>} */

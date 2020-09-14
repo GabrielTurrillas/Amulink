@@ -1,12 +1,12 @@
 import { 
-    FETCH_PACIENTES_START, 
     FETCH_PACIENTES_SUCCESS, 
-    FETCH_PACIENTES_FAILURE 
+    FETCH_PACIENTES_FAILURE,
+    ADD_PACIENTE_SUCCESS,
+    ADD_PACIENTE_FAILURE 
 } from '../actions/types';
 
 
 const initialState = {
-    loading: false,
     pacientes: [],
     errors: '',
 };
@@ -14,23 +14,26 @@ const initialState = {
 
 const pacientesReducer = (state=initialState, action) => {
     switch (action.type) {
-        case FETCH_PACIENTES_START:
-            return {
-                ...state,
-                loading: true,
-            };
         case FETCH_PACIENTES_SUCCESS:
             return {
                 ...state,
                 pacientes: action.payload,
-                loading: false,
                 errors: ''
             }
         case FETCH_PACIENTES_FAILURE:
             return {
                 ...state,
                 errors: action.payload,
-                loading: false,
+            }
+        case ADD_PACIENTE_SUCCESS:
+            return [
+                ...state,
+                action.payload
+            ]
+        case ADD_PACIENTE_FAILURE:
+            return {
+                ...state,
+                errors: action.payload,
             }
         default:
             return state
