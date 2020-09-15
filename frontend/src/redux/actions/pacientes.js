@@ -7,6 +7,7 @@ import {
     ADD_PACIENTE_FAILURE
 } from './types';
 
+
 export const fetchPacientes = () => async dispatch => {
     dispatch({ type: FETCH_PACIENTES_START });
     const config = {
@@ -43,17 +44,20 @@ export const agregarPacientes = ({ rut, nombre, apellidoPaterno, apellidoMaterno
 
     const body = JSON.stringify({ rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion });
 
-    try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/paciente/`, body, config);
-        dispatch({
-            type: ADD_PACIENTE_SUCCESS,
-            payload: res.data
+    axios.post(`${process.env.REACT_APP_API_URL}/api/paciente/`, body, config)
+        .then(res =>{
+            dispatch({
+                type: ADD_PACIENTE_SUCCESS,
+                payload: res.data
+            })
         })
-    } catch (res) {
-        dispatch({
-            type: ADD_PACIENTE_FAILURE,
-        });
-    }
-}
+        .catch (err=>{
+            dispatch({
+                type: ADD_PACIENTE_FAILURE,
+                errors: err.data
+            });
+        }) 
+} 
+
 
 

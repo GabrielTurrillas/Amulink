@@ -26,10 +26,11 @@ const pacientesReducer = (state=initialState, action) => {
                 errors: action.payload,
             }
         case ADD_PACIENTE_SUCCESS:
-            return [
+            return {
                 ...state,
-                action.payload
-            ]
+                pacientes: [...state.pacientes, action.payload],
+                errors:''
+            }
         case ADD_PACIENTE_FAILURE:
             return {
                 ...state,
