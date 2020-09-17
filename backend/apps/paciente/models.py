@@ -13,6 +13,7 @@ class Paciente(models.Model):
     direccion = models.CharField(max_length=100)
     comunaResidencia = models.CharField(max_length=100) #hacerla con opciones
     ocupacionProfecion = models.CharField(max_length=50)
+    userAccount = models.ForeignKey('accounts.UserAccount', related_name='pacientes', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre
