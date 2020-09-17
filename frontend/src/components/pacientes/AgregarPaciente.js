@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { load_user } from '../../redux/actions/auth';
 import { agregarPacientes } from '../../redux/actions/pacientes'
@@ -7,13 +7,14 @@ import { agregarPacientes } from '../../redux/actions/pacientes'
 const AgregarPaciente = () => {
     const {register, handleSubmit, errors} = useForm();
     const dispatch = useDispatch();
+    const user = useSelector(state => state.auth.user)
 
     useEffect(() => {
         load_user(); //revisar que pasa si no esta logeado el usuario
     }, [])
 
     const onSubmit = (data) => {
-        dispatch(agregarPacientes(data))
+        dispatch(agregarPacientes(user, data))
     };
     
     return(
