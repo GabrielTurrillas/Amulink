@@ -22,10 +22,10 @@ class PacienteListCreateView(ListCreateAPIView):
     
 
 
-
 class PacienteView(RetrieveUpdateDestroyAPIView):
     queryset = Paciente.objects.all()
     serializer_class = PacienteSerializer
+
 
 
 """ class UserIdViewSet(viewsets.ModelViewSet):

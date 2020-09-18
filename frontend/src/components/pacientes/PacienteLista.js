@@ -24,6 +24,7 @@ const PacienteLista = () => {
             {pacientes.map(({ id, nombre, apellidoPaterno, email }) =>
                 <div key={id}>
                     <Paciente 
+                        id={id}
                         nombre={nombre} 
                         apellidoPaterno={apellidoPaterno} 
                         email={email}

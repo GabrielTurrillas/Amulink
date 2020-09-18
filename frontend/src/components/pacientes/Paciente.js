@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
-const Paciente = ({nombre, apellidoPaterno, email}) => {    
+const Paciente = ({id, nombre, apellidoPaterno, email}) => {    
     return(
         <Fragment>
-            nombre: {nombre} apellido: {apellidoPaterno} email: {email}
+            nombre: <Link to={'/pacientes/'+id} >{nombre}</Link> apellido: {apellidoPaterno} email: {email}
         </Fragment>
     );
 }

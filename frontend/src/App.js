@@ -1,6 +1,7 @@
 import React from 'react'; 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Pacientes from './containers/pacientes/Pacientes';
+import pacienteDetalle from './containers/pacientes/PacienteDetalle';
 
 import Home from './containers/Home';
 import Login from './containers/accounts/Login';
@@ -26,8 +27,10 @@ const App = () => (
                     <Route exact path='/reset-password' component={ResetPassword} />
                     <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                     <Route exact path='/activate/:uid/:token' component={Activate} />
+                    <Route path='/pacientes/:id' component={pacienteDetalle} />
                 </Switch>
             </Layout>
+
         </Router>
     </Provider>
 );
