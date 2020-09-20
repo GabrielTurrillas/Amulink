@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPacientes } from '../../redux/actions/pacientes';
 import { load_user } from '../../redux/actions/auth';
-import Paciente from '../../components/pacientes/Paciente';
-
 
 const PacienteLista = () => {
     const dispatch = useDispatch();
@@ -45,13 +43,6 @@ const PacienteLista = () => {
     ) 
 }
 
-const tableStyle = {
-
-}
-
-const aStyle = {
-
-}
 
 export default PacienteLista;
 

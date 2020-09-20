@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import  PacienteLista  from '../components/pacientes/PacienteLista';
 
 const Home = ({ isAuthenticated }) => {
     const showLoginButton = () => (
@@ -8,16 +9,28 @@ const Home = ({ isAuthenticated }) => {
             <Link className='btn btn-primary btn-lg' to='/login' role='button'>Login</Link>
         </Fragment>
     )
-    const hideLoginButton = () => (
+    const hide = () => (
         <></>
     )
+    const showPacienteLista = () => (
+        <div class='card mt-4 mb-5'>
+            <PacienteLista />
+        </div>
+    ) 
+    const showIngresarPacienteButton = () => (
+        <Fragment>
+            <Link className='btn btn-success btn-lg' to='/Pacientes' role='button'>Ingresar Paciente</Link>
+        </Fragment>
+    )
+
     return (
     <div className='container'>
         <div className='jumbotron mt-5'>
             <h1 className='display-4'>Amülink</h1>
             <p className='lead'>Desarrollo de Amülink</p>
-            {isAuthenticated ? hideLoginButton() : showLoginButton()}
+            {isAuthenticated ? showIngresarPacienteButton() : showLoginButton()}
         </div>
+        {isAuthenticated ? showPacienteLista() : hide()}
     </div>
     )
 };
@@ -27,4 +40,4 @@ const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, {} )(Home);
+export default connect(mapStateToProps, { } )(Home);
