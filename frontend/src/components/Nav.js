@@ -16,15 +16,20 @@ const Nav = ({ logout, isAuthenticated }) => {
     );
 
     const authLinks = () => (
+        <Fragment>
             <li className='nav-item'>
-                <a className='nav-link' href='#!' onClick={logout}>Logout</a>
+                <Link className='nav-link' to='/pacientes'>Pacientes</Link>
             </li>
+            <li className='nav-item'>
+                <a className='nav-link' href='/' onClick={logout}>Logout</a>
+            </li>
+        </Fragment>
     );
 
 
     return (
         <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-            <Link className='navbar-brand' to='/'>Navbar</Link>
+            <Link className='navbar-brand' to='/'>Amülink</Link>
             <button 
                 className='navbar-toggler' 
                 type='button' 

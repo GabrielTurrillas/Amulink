@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Pacientes from './containers/pacientes/Pacientes';
 import pacienteDetalle from './containers/pacientes/PacienteDetalle';
 
+import PruebaDeComponentes from './components/PruebaDeComponentes';
 import Home from './containers/Home';
 import Login from './containers/accounts/Login';
 import Signup  from './containers/accounts/Signup';
@@ -28,6 +29,7 @@ const App = () => (
                     <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                     <Route exact path='/activate/:uid/:token' component={Activate} />
                     <Route path='/pacientes/:id' component={pacienteDetalle} />
+                    <Route path='/prueba' component={PruebaDeComponentes} />
                 </Switch>
             </Layout>
 

@@ -18,91 +18,143 @@ const AgregarPaciente = () => {
     };
     
     return(
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <input 
-                type="text"
-                name="rut" 
-                placeholder="Rut"
-                ref={register({
-                    required:'Campo "Rut" obligatorio',
-                })}
-                /> <br/> {errors.rut && <p>{errors.rut.message}</p>} <br/>
-            <input
-                type="text"
-                name="nombre" 
-                placeholder="Nombre"
-                ref={register({
-                    required: 'Campo "nombre" obligatorio',
-                    minLength: {value: 2, message: 'campo "nombre" debe tener mas de 1 caracter'}
-                })}
-                /> <br/> {errors.nombre && <p>{errors.nombre.message}</p>} <br/>
-            <input 
-                type="text"
-                name="apellidoPaterno" 
-                placeholder="Apellido Paterno"
-                ref={register({
-                    required:'Campo "Apellido Paterno" obligatorio',
-                })}
-                /> <br/> {errors.apellidoPaterno && <p>{errors.apellidoPaterno.message}</p>} <br/>
-            <input 
-                type="text" 
-                name="apellidoMaterno" 
-                placeholder="Apellido Materno"
-                ref={register({
-                    required:'Campo "Apellido Materno" obligatorio',
-                    minLength: {value: 2, message: 'campo "Apellido Materno" debe tener mas de 1 caracter'}
-                })}
-                /> <br/> {errors.apellidoMaterno && <p>{errors.apellidoMaterno.message}</p>} <br/>
-            <input 
-                type="text"
-                name="telefono" 
-                placeholder="Telefono"
-                ref={register({
-                    required:'Campo "Telefono" obligatorio',
-                })}
-                /> <br/> {errors.telefono && <p>{errors.telefono.message}</p>} <br/>
-            <input 
-                type="text"
-                name="email" 
-                placeholder="Email"
-                ref={register({
-                    required:'Campo "Email" obligatorio',
-                })}
-            /> <br/> {errors.email && <p>{errors.email.message}</p>} <br/>
-            <input 
-                type="text"
-                name="genero" 
-                placeholder="Genero"
-                ref={register({
-                    required:'Campo "Genero" obligatorio',
-                })}
-                /> <br/> {errors.genero && <p>{errors.genero.message}</p>} <br/>
-            <input 
-                type="text"
-                name="direccion" 
-                placeholder="Direccion"
-                ref={register({
-                    required:'Campo "Direccion" obligatorio',
-                })}
-                /> <br/> {errors.direccion && <p>{errors.direccion.message}</p>} <br/>
-            <input 
-                type="text"
-                name="comunaResidencia" 
-                placeholder="Comuna de residencia"
-                ref={register({
-                    required:'Campo "Comuna de residencia" obligatorio',
-                })}
-                /> <br/> {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>} <br/>
-            <input 
-                type="text"
-                name="ocupacionProfecion" 
-                placeholder="Ocupacion o Profecion"
-                ref={register({
-                    required:'Campo "Ocupacion o Profecion" obligatorio',
-                })}
-                /> <br/> {errors.ocupacionProfecion && <p>{errors.ocupacionProfecion.message}</p>} <br/>
-            <button>Submit</button>
-        </form>
+        <div className='container mt-5'>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className='row'>
+                    <div className='form-group col-6'>
+                        <input
+                            className='form-control' 
+                            type="text"
+                            name="rut" 
+                            placeholder="Rut"
+                            ref={register({
+                                required:'Campo "Rut" obligatorio',
+                            })}
+                        /> 
+                        {errors.rut && <p>{errors.rut.message}</p>}
+                    </div>
+                    <div className='form-group col-6'>
+                        <input
+                            className='form-control'
+                            type="text"
+                            name="nombre" 
+                            placeholder="Nombre"
+                            ref={register({
+                                required: 'Campo "nombre" obligatorio',
+                                minLength: {value: 2, message: 'campo "nombre" debe tener mas de 1 caracter'}
+                            })}
+                        /> 
+                        {errors.nombre && <p>{errors.nombre.message}</p>}
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='form-group col-6'>
+                        <input
+                            className='form-control' 
+                            type="text"
+                            name="apellidoPaterno" 
+                            placeholder="Apellido Paterno"
+                            ref={register({
+                                required:'Campo "Apellido Paterno" obligatorio',
+                            })}
+                        /> 
+                        {errors.apellidoPaterno && <p>{errors.apellidoPaterno.message}</p>}
+                    </div>
+                    <div className='form-group col-6'>
+                        <input
+                            className='form-control' 
+                            type="text" 
+                            name="apellidoMaterno" 
+                            placeholder="Apellido Materno"
+                            ref={register({
+                                required:'Campo "Apellido Materno" obligatorio',
+                                minLength: {value: 2, message: 'campo "Apellido Materno" debe tener mas de 1 caracter'}
+                            })}
+                        /> 
+                        {errors.apellidoMaterno && <p>{errors.apellidoMaterno.message}</p>}
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='form-group col-6'>
+                        <input
+                            className='form-control' 
+                            type="text"
+                            name="telefono" 
+                            placeholder="Telefono"
+                            ref={register({
+                                required:'Campo "Telefono" obligatorio',
+                            })}
+                        /> 
+                        {errors.telefono && <p>{errors.telefono.message}</p>}
+                    </div>
+                    <div className='form-group col-6'>
+                        <input
+                            className='form-control' 
+                            type="text"
+                            name="email" 
+                            placeholder="Email"
+                            ref={register({
+                                required:'Campo "Email" obligatorio',
+                            })}
+                        /> 
+                        {errors.email && <p>{errors.email.message}</p>}
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='form-group col-6'>
+                        <input
+                            className='form-control' 
+                            type="text"
+                            name="genero" 
+                            placeholder="Genero"
+                            ref={register({
+                                required:'Campo "Genero" obligatorio',
+                            })}
+                        /> 
+                    {errors.genero && <p>{errors.genero.message}</p>}
+                    </div>
+                    <div className='form-group col-6'>
+                        <input
+                            className='form-control' 
+                            type="text"
+                            name="direccion" 
+                            placeholder="Direccion"
+                            ref={register({
+                                required:'Campo "Direccion" obligatorio',
+                            })}
+                        /> 
+                        {errors.direccion && <p>{errors.direccion.message}</p>}
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='form-group col-6'>
+                        <input
+                            className='form-control' 
+                            type="text"
+                            name="comunaResidencia" 
+                            placeholder="Comuna de residencia"
+                            ref={register({
+                                required:'Campo "Comuna de residencia" obligatorio',
+                            })}
+                        />
+                        {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>}
+                    </div>
+                    <div className='form-group col-6'> 
+                        <input
+                            className='form-control' 
+                            type="text"
+                            name="ocupacionProfecion" 
+                            placeholder="Ocupacion o Profecion"
+                            ref={register({
+                                required:'Campo "Ocupacion o Profecion" obligatorio',
+                            })}
+                        />
+                        {errors.ocupacionProfecion && <p>{errors.ocupacionProfecion.message}</p>}
+                    </div>
+                </div> 
+                    <button className='mb-3 btn btn-success' type='submit'>Ingresar</button>
+            </form>
+        </div>
     );
 };
 

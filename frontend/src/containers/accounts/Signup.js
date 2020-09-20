@@ -83,7 +83,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                         required
                     />
                 </div>
-                <button className='btn btn-primary' type='submit'>Register</button>
+                <button className='btn btn-success' type='submit'>Register</button>
             </form>
             <p className='mt-3'>
                 Already have an account? <Link to='/login'>Sign In</Link>
