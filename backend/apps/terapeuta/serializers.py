@@ -1,8 +1,8 @@
 from rest_framework import serializers
 
-from .models import Terapeuta
+from .models import PerfilTerapeuta
 
 class TerapeutaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Terapeuta
+        model = PerfilTerapeuta
         fields = '__all__'

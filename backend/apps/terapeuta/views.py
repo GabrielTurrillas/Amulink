@@ -1,7 +1,7 @@
-from .models import Terapeuta
+from .models import PerfilTerapeuta
 from .serializers import TerapeutaSerializer
 from rest_framework import viewsets
 
 class TerapeutaViewSet(viewsets.ModelViewSet):
-    queryset = Terapeuta.objects.all()
+    queryset = PerfilTerapeuta.objects.all()
     serializer_class = TerapeutaSerializer
