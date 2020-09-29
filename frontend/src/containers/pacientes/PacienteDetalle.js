@@ -18,7 +18,7 @@ const PacienteDetalle = (props) => {
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/api/paciente/`+id, config)
         .then(res => setPaciente(res.data))
-    }, [])
+    }, [id, config])
 
     
     const { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion } = paciente

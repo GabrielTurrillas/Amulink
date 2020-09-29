@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPacientes } from '../../redux/actions/pacientes';
 import { load_user } from '../../redux/actions/auth';
+import { Link } from 'react-router-dom';
 
 const PacienteLista = () => {
     const dispatch = useDispatch();
@@ -31,10 +32,10 @@ const PacienteLista = () => {
                 <tbody>
                     {pacientes.map(({ id, nombre, apellidoPaterno, email }) =>
                         <tr key={id} class='clickable-row'>
-                            <th scope="row"><a>{id}</a></th>
-                            <td><a href="#">{nombre}</a></td>
-                            <td><a href="#">{apellidoPaterno}</a></td>
-                            <td><a href="#">{email}</a></td>
+                            <th scope="row"><Link>{id}</Link></th>
+                            <td><Link to={"Pacientes/"+id}>{nombre}</Link></td>
+                            <td><Link to={"Pacientes/"+id}>{apellidoPaterno}</Link></td>
+                            <td><Link to={"Pacientes/"+id}>{email}</Link></td>
                         </tr>
                     )}
                 </tbody>
@@ -43,10 +44,9 @@ const PacienteLista = () => {
     ) 
 }
 
-
 export default PacienteLista;
 
-{/* <table class="table table-hover">
+/* <table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -74,5 +74,5 @@ export default PacienteLista;
       <td>@twitter</td>
     </tr>
   </tbody>
-</table>                  */}
+</table>                  */
 

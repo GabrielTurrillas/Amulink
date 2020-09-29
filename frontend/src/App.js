@@ -32,7 +32,6 @@ const App = () => (
                     <Route path='/prueba' component={PruebaDeComponentes} />
                 </Switch>
             </Layout>
-
         </Router>
     </Provider>
 );

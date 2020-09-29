@@ -13,7 +13,7 @@ const Home = ({ isAuthenticated }) => {
         <></>
     )
     const showPacienteLista = () => (
-        <div class='card mt-4 mb-5'>
+        <div className='card mt-4 mb-5'>
             <PacienteLista />
         </div>
     ) 
