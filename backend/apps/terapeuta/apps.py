@@ -1,5 +1,7 @@
 from django.apps import AppConfig
 
-
 class TerapeutaConfig(AppConfig):
-    name = 'terapeuta'
+    name = 'apps.terapeuta'
+
+    def ready(self):
+        import apps.terapeuta.signals
