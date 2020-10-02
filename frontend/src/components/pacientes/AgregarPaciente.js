@@ -152,7 +152,7 @@ const AgregarPaciente = () => {
                         {errors.ocupacionProfecion && <p>{errors.ocupacionProfecion.message}</p>}
                     </div>
                 </div> 
-                    <button className='mb-3 btn btn-success' type='submit'>Ingresar</button>
+                <button className='mb-3 btn btn-success' type='submit'>Ingresar</button>
             </form>
         </div>
     );

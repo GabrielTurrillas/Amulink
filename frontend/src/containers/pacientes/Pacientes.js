@@ -6,12 +6,12 @@ const Pacientes = () => {
 
     return (
         <div className='container mt-5'>
-            <div class='card'>
+            <div className='card'>
                 <h1 className='mt-4 ml-4'>Pacientes</h1>
-                <p class="lead ml-4">Ingresar pacientes</p>
+                <p className="lead ml-4">Ingresar pacientes</p>
                 <AgregarPaciente />
             </div>
-            <div class='card mt-4 mb-5'>
+            <div className='card mt-4 mb-5'>
                 <PacienteLista />
             </div>
         </div>

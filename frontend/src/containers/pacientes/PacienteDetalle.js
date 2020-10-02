@@ -18,23 +18,57 @@ const PacienteDetalle = (props) => {
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/api/paciente/`+id, config)
         .then(res => setPaciente(res.data))
-    }, [id, config])
+    },[])
 
     
     const { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion } = paciente
 
     return (
-        <div>
-            <h3>Rut: { rut }</h3>
-            <h3>Nombre: { nombre }</h3>
-            <h3>Apellido paterno: { apellidoPaterno }</h3>
-            <h3>Apelldio materno: { apellidoMaterno }</h3>
-            <h3>Genero: { genero }</h3>
-            <h3>Telefono: { telefono }</h3>
-            <h3>Email: { email }</h3>
-            <h3>direccion: { direccion }</h3>
-            <h3>Comuna de Residencia: { comunaResidencia }</h3>
-            <h3>Ocupacion o Profecion: { ocupacionProfecion }</h3>
+        <div className='container mt-4'>
+            <h3 className='mb-4 ml-4'>Ficha del Paciente</h3>
+            <div className="card" style={{width: '55rem', fontSize: 'x-large'}}>
+                <div className='row ml-3 mt-3'>
+                    <div className='col'>
+                        <p className='font-weight-light'>Rut: { rut }</p>
+                    </div>
+                    <div className='col'>
+                        <p className='font-weight-light'>Nombre: { nombre }</p>
+                    </div>
+                </div>
+                <div className='row ml-3 mt-3'>
+                    <div className='col'>
+                        <p className='font-weight-light'>Apellido paterno: { apellidoPaterno }</p>
+                    </div>
+                    <div className='col'>
+                        <p className='font-weight-light'>Apelldio materno: { apellidoMaterno }</p>
+                    </div>
+                </div>
+                <div className='row ml-3 mt-3'>
+                    <div className='col'>
+                        <p className='font-weight-light'>Genero: { genero }</p>
+                    </div>
+                    <div className='col'>
+                        <p className='font-weight-light'>Telefono: { telefono }</p>
+                    </div>
+                </div>
+                <div className='row ml-3 mt-3'>
+                    <div className='col'>
+                        <p className='font-weight-light'>Email: { email }</p>
+                    </div>
+                    <div className='col'>
+                        <p className='font-weight-light'>direccion: { direccion }</p>
+                    </div>
+                </div>
+                <div className='row ml-3 mt-3'>
+                    <div className='col'>
+                        <p className='font-weight-light'>Comuna de Residencia: { comunaResidencia }</p>
+                    </div>
+                    <div className='col'>
+                        <p className='font-weight-light'>Ocupacion o Profecion: { ocupacionProfecion }</p>
+                    </div>
+                </div>
+            </div>
+            <button className='mb-3 btn btn-primary mt-4'>Modificar</button>
         </div>
     );
 }

@@ -20,7 +20,7 @@ const PacienteLista = () => {
     }
     return (
         <div className='container'>
-            <table class="table table-hover">
+            <table className="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
@@ -31,8 +31,8 @@ const PacienteLista = () => {
                 </thead>
                 <tbody>
                     {pacientes.map(({ id, nombre, apellidoPaterno, email }) =>
-                        <tr key={id} class='clickable-row'>
-                            <th scope="row"><Link>{id}</Link></th>
+                        <tr key={id} className='clickable-row'>
+                            <th scope="row">{id}</th>
                             <td><Link to={"Pacientes/"+id}>{nombre}</Link></td>
                             <td><Link to={"Pacientes/"+id}>{apellidoPaterno}</Link></td>
                             <td><Link to={"Pacientes/"+id}>{email}</Link></td>
