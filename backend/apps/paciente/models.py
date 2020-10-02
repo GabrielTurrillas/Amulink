@@ -27,7 +27,3 @@ class Terapia(models.Model):
     userAccount = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     fechaInicio = models.DateTimeField(auto_now_add=True)
 
-@receiver(post_save, sender=Paciente)
-def create_terapia(sender, instance, created, **kwargs):
-    if created:
-        Terapia.objects.create(paciente=instance, userAccount=request.user)
