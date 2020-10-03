@@ -1,9 +1,10 @@
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from ..accounts.models import UserAccount
-from .models import Paciente, Terapia
+from ..terapia.models import Terapia
+from .models import Paciente
 from .serializers import PacienteSerializer
 from ..accounts.models import UserAccount
 
@@ -30,15 +31,10 @@ class PacienteListCreateView(ListCreateAPIView):
         return Response(serializer_class.errors)
 
 
-
 class PacienteView(RetrieveUpdateDestroyAPIView):
     queryset = Paciente.objects.all()
     serializer_class = PacienteSerializer
 
 
 
-""" class UserIdViewSet(viewsets.ModelViewSet):
-    serializer_class = UserSerializer
 
-    def get_queryset(self):
-        return User.objects.filter(id=self.request.user.id) """

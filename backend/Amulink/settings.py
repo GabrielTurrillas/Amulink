@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'apps.accounts',
     'apps.paciente',
     'apps.terapeuta',
+    'apps.terapia',
 
     #librarias y django
     'djoser',
