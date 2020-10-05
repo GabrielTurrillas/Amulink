@@ -1,11 +1,12 @@
 from django.http import Http404
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework.generics import ListCreateAPIView
 from apps.paciente.models import Paciente
 from apps.paciente.serializers import PacienteSerializer
-from .serializers import TerapiaSerializer
-from .models import Terapia
+from .serializers import TerapiaSerializer, SesionSerializer
+from .models import Terapia, Sesion
 
 
 class TerapiaDetailView(APIView):
@@ -22,6 +23,9 @@ class TerapiaDetailView(APIView):
         return Response(terapiaSerializer.data)
 
 
+class SesionListCreateView(ListCreateAPIView):
+    serializer_class = SesionSerializer
+    queryset = Sesion.objects.all()
 
         
         
