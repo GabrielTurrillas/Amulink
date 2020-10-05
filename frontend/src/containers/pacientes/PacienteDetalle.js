@@ -3,10 +3,9 @@ import React,{ useEffect, useState } from 'react';
 
 
 const PacienteDetalle = (props) => {
-    const id = props.match.params.id
-    const [paciente, setPaciente] = useState({
-    
-    })
+    const idPaciente = props.match.params.id
+    const [paciente, setPaciente] = useState({})
+    const [terapia, setTerapia] = useState({})
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -14,10 +13,14 @@ const PacienteDetalle = (props) => {
             'Accept': 'application/json'
         }
     };
+
     
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/api/paciente/`+id, config)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/paciente/`+idPaciente, config)
         .then(res => setPaciente(res.data))
+
+        axios.get(`${process.env.REACT_APP_API_URL}/api/terapia/`+idPaciente, config)
+        .then(res => setTerapia(res.data))
     },[])
 
     
@@ -65,6 +68,19 @@ const PacienteDetalle = (props) => {
                     </div>
                     <div className='col'>
                         <p className='font-weight-light'>Ocupacion o Profecion: { ocupacionProfecion }</p>
+                    </div>
+                </div>
+                <div className='row ml-3 mt-3'>
+                    <div className='col'>
+                        <p className='font-weight-light'>Motivo de Consulta: { terapia.motivoConsulta }</p>
+                    </div>
+                    <div className='col'>
+                        <p className='font-weight-light'>Tipo de Terapia: { terapia.tipoTerapia }</p>
+                    </div>
+                </div>
+                <div className='row ml-3 mt-3'>
+                    <div className='col'>
+                        <p className='font-weight-light'>Captacion: { terapia.captacion }</p>
                     </div>
                 </div>
             </div>
