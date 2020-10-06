@@ -33,9 +33,9 @@ const PacienteLista = () => {
                     {pacientes.map(({ id, nombre, apellidoPaterno, email }) =>
                         <tr key={id} className='clickable-row'>
                             <th scope="row">{id}</th>
-                            <td><Link to={"Pacientes/"+id}>{nombre}</Link></td>
-                            <td><Link to={"Pacientes/"+id}>{apellidoPaterno}</Link></td>
-                            <td><Link to={"Pacientes/"+id}>{email}</Link></td>
+                            <td><Link to={"pacientes/"+id}>{nombre}</Link></td>
+                            <td><Link to={"pacientes/"+id}>{apellidoPaterno}</Link></td>
+                            <td><Link to={"pacientes/"+id}>{email}</Link></td>
                         </tr>
                     )}
                 </tbody>

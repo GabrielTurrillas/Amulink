@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Pacientes from './containers/pacientes/Pacientes';
 import pacienteDetalle from './containers/pacientes/PacienteDetalle';
+import FichaPaciente from './containers/pacientes/FichaPaciente';
 
 import PruebaDeComponentes from './components/PruebaDeComponentes';
 import Home from './containers/Home';
@@ -28,7 +29,8 @@ const App = () => (
                     <Route exact path='/reset-password' component={ResetPassword} />
                     <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                     <Route exact path='/activate/:uid/:token' component={Activate} />
-                    <Route path='/pacientes/:id' component={pacienteDetalle} />
+                    <Route exact path='/pacientes/:id' component={pacienteDetalle} />
+                    <Route exact path='/pacientes/ficha_paciente/:id' component={FichaPaciente} />
                     <Route path='/prueba' component={PruebaDeComponentes} />
                 </Switch>
             </Layout>
