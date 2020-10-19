@@ -1,17 +1,20 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from ..accounts.models import UserAccount
 from ..terapia.models import Terapia
+from ..accounts.models import UserAccount
 from .models import Paciente
 from .serializers import PacienteSerializer
-from ..accounts.models import UserAccount
+from .permissions import PermisoTerapiaPaciente
 
 class PacienteListCreateView(ListCreateAPIView):
     serializer_class = PacienteSerializer
     pagination_class = None
     queryset = Paciente.objects.all()
+    permission_classes = [PermisoTerapiaPaciente]
     
     def get_queryset(self):
         return Paciente.objects.filter(userAccount=self.request.user)
@@ -34,6 +37,7 @@ class PacienteListCreateView(ListCreateAPIView):
 class PacienteView(RetrieveUpdateDestroyAPIView):
     queryset = Paciente.objects.all()
     serializer_class = PacienteSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly, PermisoTerapiaPaciente]
 
 
 

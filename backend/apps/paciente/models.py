@@ -1,5 +1,4 @@
 from django.db import models
-from apps.accounts.models import UserAccount
 # Create your models here.
 
 class Paciente(models.Model):
