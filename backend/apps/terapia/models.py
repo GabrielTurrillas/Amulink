@@ -19,5 +19,9 @@ class Terapia(models.Model):
 
 class Sesion(models.Model):
     terapia = models.ForeignKey(Terapia, on_delete=models.CASCADE)
+    pago = models.BooleanField(default=False)
     asistio = models.BooleanField(default=False)
-    fechaSesion = models.DateField()
+    fechaSesion = models.DateField(auto_now_add=True)
+    modalidad = models.CharField(max_length=30, blank=True, null=True)
+    notasSesion = models.TextField(blank=True, null=True)
+    fechaPago = models.DateField(blank=True, null=True)

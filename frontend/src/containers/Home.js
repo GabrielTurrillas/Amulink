@@ -13,9 +13,7 @@ const Home = ({ isAuthenticated }) => {
         <></>
     )
     const showPacienteLista = () => (
-        <div className='card mt-4 mb-5'>
-            <PacienteLista />
-        </div>
+        <PacienteLista />
     ) 
     const showIngresarPacienteButton = () => (
         <Fragment>

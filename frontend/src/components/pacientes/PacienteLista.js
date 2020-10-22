@@ -20,59 +20,30 @@ const PacienteLista = () => {
     }
     return (
         <div className='container'>
-            <table className="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido Paterno</th>
-                        <th scope="col">Email</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {pacientes.map(({ id, nombre, apellidoPaterno, email }) =>
-                        <tr key={id} className='clickable-row'>
-                            <th scope="row">{id}</th>
-                            <td><Link to={"pacientes/"+id}>{nombre}</Link></td>
-                            <td><Link to={"pacientes/"+id}>{apellidoPaterno}</Link></td>
-                            <td><Link to={"pacientes/"+id}>{email}</Link></td>
+            <div className='card mt-4 mb-5'>
+                <table className="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido Paterno</th>
+                            <th scope="col">Email</th>
                         </tr>
-                    )}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {pacientes.map(({ id, nombre, apellidoPaterno, email }) =>
+                            <tr key={id} className='clickable-row'>
+                                <th scope="row">{id}</th>
+                                <td><Link to={"pacientes/"+id}>{nombre}</Link></td>
+                                <td><Link to={"pacientes/"+id}>{apellidoPaterno}</Link></td>
+                                <td><Link to={"pacientes/"+id}>{email}</Link></td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
         </div>
     ) 
 }
 
 export default PacienteLista;
-
-/* <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>                  */
-

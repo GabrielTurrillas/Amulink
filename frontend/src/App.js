@@ -11,6 +11,7 @@ import Signup  from './containers/accounts/Signup';
 import Activate from './containers/accounts/Activate';
 import ResetPassword from './containers/accounts/ResetPassword';
 import ResetPasswordConfirm from './containers/accounts/ResetPasswordConfirm';
+import RegistroSesion from './containers/pacientes/RegistroSesion';
 
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -31,6 +32,7 @@ const App = () => (
                     <Route exact path='/activate/:uid/:token' component={Activate} />
                     <Route exact path='/pacientes/:id' component={pacienteDetalle} />
                     <Route exact path='/pacientes/ficha_paciente/:id' component={FichaPaciente} />
+                    <Route exact path='/registro_sesion' component={RegistroSesion} />
                     <Route path='/prueba' component={PruebaDeComponentes} />
                 </Switch>
             </Layout>

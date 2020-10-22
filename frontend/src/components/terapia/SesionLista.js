@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import axios from 'axios';
 
 const SesionLista = () => {
@@ -22,27 +22,31 @@ const SesionLista = () => {
         ) 
     }
     return (
-        <div className='container'>
-            <h3 className='mb-4'>Lista de Sesiones</h3>
-            <table className="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Asistio</th>
-                        <th scope="col">Fecha Sesion</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {sesiones.map(({ id, asistio, fechaSesion }) =>
-                        <tr key={id} className='clickable-row'>
-                            <th scope="row">{id}</th>
-                            <td>{asistio}</td>
-                            <td>{fechaSesion}</td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>
-        </div>
+       <Fragment>
+            <div className='card mb-4'>
+                <h3 className='mb-4 mt-4 ml-4'>Sesiones</h3>
+                <div className='card mb-4 ml-4 mr-4'>
+                    <table className="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Asistio</th>
+                                <th scope="col">Fecha Sesion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {sesiones.map(({ id, asistio, fechaSesion }) =>
+                                <tr key={id} className='clickable-row'>
+                                    <th scope="row">{id}</th>
+                                    <td>{asistio}</td>
+                                    <td>{fechaSesion}</td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </Fragment>
     ) 
 }
 
