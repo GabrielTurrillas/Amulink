@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPacientes } from '../../redux/actions/pacientes';
 import { load_user } from '../../redux/actions/auth';
@@ -19,8 +19,8 @@ const PacienteLista = () => {
         ) 
     }
     return (
-        <div className='container'>
-            <div className='card mt-4 mb-5'>
+        <Fragment>
+            <div className='card mt-4 ml-4 mr-4'>
                 <table className="table table-hover">
                     <thead>
                         <tr>
@@ -42,7 +42,7 @@ const PacienteLista = () => {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </Fragment>
     ) 
 }
 

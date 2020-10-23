@@ -5,8 +5,9 @@ import RegistrarSesion from '../../components/terapia/RegistrarSesion';
 const RegistroSesion = () => {
     return (
         <div className='container mt-5'>
-            <RegistrarSesion />
-            <SesionLista />
+            <div className='jumbotron mt-5'>
+                <RegistrarSesion />
+            </div>
         </div>
     );
 }

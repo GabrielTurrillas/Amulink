@@ -6,7 +6,7 @@ import  PacienteLista  from '../components/pacientes/PacienteLista';
 const Home = ({ isAuthenticated }) => {
     const showLoginButton = () => (
         <Fragment>
-            <Link className='btn btn-primary btn-lg' to='/login' role='button'>Login</Link>
+            <Link className='btn btn-primary btn-lg mt-4 ml-4' to='/login' role='button'>Login</Link>
         </Fragment>
     )
     const hide = () => (
@@ -17,18 +17,20 @@ const Home = ({ isAuthenticated }) => {
     ) 
     const showIngresarPacienteButton = () => (
         <Fragment>
-            <Link className='btn btn-success btn-lg' to='/Pacientes' role='button'>Ingresar Paciente</Link>
+            <Link className='btn btn-primary mt-4 ml-4' to='/Pacientes' role='button'>Ingresar Paciente</Link>
         </Fragment>
     )
 
     return (
     <div className='container'>
         <div className='jumbotron mt-5'>
-            <h1 className='display-4'>Amülink</h1>
-            <p className='lead'>Desarrollo de Amülink</p>
-            {isAuthenticated ? showIngresarPacienteButton() : showLoginButton()}
+            <div className='ml-4 mr-4'>
+                <h1 className='display-4'>Amülink</h1>
+                <p className='lead'>Desarrollo de Amülink</p>
+            </div>
+                {isAuthenticated ? showPacienteLista() : hide()}
+                {isAuthenticated ? showIngresarPacienteButton() : showLoginButton()}
         </div>
-        {isAuthenticated ? showPacienteLista() : hide()}
     </div>
     )
 };

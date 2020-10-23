@@ -33,7 +33,7 @@ export const fetchPacientes = () => async dispatch => {
         })
 }
 
-export const agregarPacientes = (user, { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion }) => async dispatch => {
+export const agregarPacientes = (user, startDate ,{ rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion }) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -41,8 +41,9 @@ export const agregarPacientes = (user, { rut, nombre, apellidoPaterno, apellidoM
             'Accept': 'application/json'
         }
     };
+    const fechaNacimiento = startDate
     const { id:userAccount } = user
-    const body = JSON.stringify({ rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion, userAccount });
+    const body = JSON.stringify({ rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, fechaNacimiento, genero, direccion, comunaResidencia, ocupacionProfecion, userAccount});
     console.log('userAccount:', userAccount)
     axios.post(`${process.env.REACT_APP_API_URL}/api/paciente/`, body, config)
         .then(res =>{

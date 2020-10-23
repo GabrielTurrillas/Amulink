@@ -8,6 +8,7 @@ class Paciente(models.Model):
     apellidoMaterno = models.CharField(max_length=50)
     telefono = models.CharField(max_length=50)
     email = models.CharField(max_length=100)
+    fechaNacimiento = models.DateTimeField(null=True, blank=True)
     genero = models.CharField(max_length=50)
     direccion = models.CharField(max_length=100)
     comunaResidencia = models.CharField(max_length=100) #hacerla con opciones

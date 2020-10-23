@@ -23,9 +23,9 @@ const SesionLista = () => {
     }
     return (
        <Fragment>
-            <div className='card mb-4'>
-                <h3 className='mb-4 mt-4 ml-4'>Sesiones</h3>
-                <div className='card mb-4 ml-4 mr-4'>
+            <div className='ml-4 mr-4'>
+                <h3 className='display-4 mb-4'>Sesiones</h3>
+                <div className='card mb-4'>
                     <table className="table table-hover">
                         <thead>
                             <tr>
