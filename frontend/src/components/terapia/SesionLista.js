@@ -1,8 +1,10 @@
 import React, { useEffect, useState, Fragment } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const SesionLista = () => {
-    const[sesiones, setSesiones] = useState({})
+    const { id:idPaciente } = useParams()
+    const [sesiones, setSesiones] = useState({})
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -11,7 +13,8 @@ const SesionLista = () => {
         }
     };
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/api/terapia/sesion/`, config)
+        console.log(idPaciente)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/terapia/sesion/`+idPaciente, config)
         .then(res => setSesiones(res.data))
     }, [])
     
@@ -21,6 +24,7 @@ const SesionLista = () => {
             <p>NO HAY SESIONES</p>
         ) 
     }
+
     return (
        <Fragment>
             <div className='ml-4 mr-4'>

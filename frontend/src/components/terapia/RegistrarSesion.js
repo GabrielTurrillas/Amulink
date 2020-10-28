@@ -1,13 +1,17 @@
-import React, { useState, Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 
 import "react-datepicker/dist/react-datepicker.css";
 
 const RegistrarSesion = () => {
-    const [fechaSesion, setFechaSesion] = useState(new Date());
-    const [fechaPago, setFechaPago] = useState(new Date());
+    const { id:idPaciente } = useParams()
+    const [instanciaTerapia, setInstanciaTerapia] = useState({})
+    const [fechaSesion, setFechaSesion] = useState(new Date())
+    const [fechaPago, setFechaPago] = useState(new Date())
+
     const {register, handleSubmit, errors} = useForm();
     const config = {
         headers: {
@@ -16,9 +20,18 @@ const RegistrarSesion = () => {
             'Accept': 'application/json'
         }
     };
-    const data = JSON.stringify({})
+
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_API_URL}/api/terapia/`+idPaciente, config)
+        .then(res => setInstanciaTerapia(res.data))
+    },[])
+
+    const { id:terapia } = instanciaTerapia
+
     const onSubmit = (data) => {
-        axios.post(`${process.env.REACT_APP_API_URL}/api/terapia/sesion/`, data, config)
+        const body = {...data, terapia, fechaSesion, fechaPago}
+        console.log(body)
+        axios.post(`${process.env.REACT_APP_API_URL}/api/terapia/sesion/`, body , config).catch(err => console.log(err))
     };
     return (    
         <Fragment>
@@ -27,12 +40,13 @@ const RegistrarSesion = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='row ml-2 mr-2'>
                     <div className='form-group col-6'>
-                        <label for="fechaSesion" className='mr-3'>Fecha de Sesion</label>
+                        <label htmlFor="fechaSesion" className='mr-3'>Fecha de Sesion</label>
                         <DatePicker
                             className='form-control' 
-                            id='fechaSesion' 
-                            selected={fechaSesion} 
-                            onChange={date => setFechaSesion(date)} 
+                            id='fechaSesion'
+                            name='fechaSesion'  
+                            selected={fechaSesion}
+                            onChange={date => setFechaSesion(date)}
                         />
                     </div>
                     <div className='form-group col-6'>
@@ -42,8 +56,8 @@ const RegistrarSesion = () => {
                             name="asistio" 
                             ref={register({
                             })}
-                            /> 
-                        <label for="asistio" className="ml-2">Asistio?</label>
+                        /> 
+                        <label htmlFor="asistio" className="ml-2">Asistio?</label>
                     </div>
                 </div>
                 <div className='row ml-2 mr-2'>
@@ -56,7 +70,7 @@ const RegistrarSesion = () => {
                             ref={register({
                                 required:'Campo "Modalidad" obligatorio',
                             })}
-                            /> 
+                        /> 
                         {errors.apellidoMaterno && <p>{errors.apellidoMaterno.message}</p>}
                     </div>
                     <div className='form-group col-6'>
@@ -66,8 +80,8 @@ const RegistrarSesion = () => {
                             name="pago" 
                             ref={register({
                             })}
-                            /> 
-                        <label for="pago" className="ml-2">Pago?</label>
+                        /> 
+                        <label htmlFor="pago" className="ml-2">Pago?</label>
                     </div>
                 </div>
                 <div className='row ml-2 mr-2'>
@@ -79,15 +93,16 @@ const RegistrarSesion = () => {
                             placeholder="Notas de la sesion"
                             ref={register({
                             })}
-                            /> 
+                        /> 
                     </div>
                     <div className='form-group col-6'>
-                        <label for="fechaSesion" className='mr-3'>Fecha de Pago</label>
+                        <label htmlFor="fechaSesion" className='mr-3'>Fecha de Pago</label>
                         <DatePicker
                             className='form-control' 
                             id='fechaPago' 
-                            selected={fechaPago} 
-                            onChange={date => setFechaPago(date)} 
+                            name='fechaPago'
+                            selected={fechaPago}
+                            onChange={date => setFechaPago(date)}
                         />
                     </div>
                 </div>

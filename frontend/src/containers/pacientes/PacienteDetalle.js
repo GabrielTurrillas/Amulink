@@ -9,7 +9,7 @@ const PacienteDetalle = (props) => {
         <div className='container'>
             <div className='jumbotron mt-5'>
                 <SesionLista />
-                <Link className='btn btn-primary ml-4' to='/registro_sesion' role='button'>Registrar Sesion</Link>
+                <Link className='btn btn-primary ml-4' to={'registro_sesion/'+idPaciente} >Registrar Sesion</Link>
                 <Link className='btn btn-outline-primary ml-4' to={'ficha_paciente/'+idPaciente} >Ver Ficha del Paciente</Link>
             </div>
         </div>

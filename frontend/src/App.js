@@ -32,7 +32,7 @@ const App = () => (
                     <Route exact path='/activate/:uid/:token' component={Activate} />
                     <Route exact path='/pacientes/:id' component={pacienteDetalle} />
                     <Route exact path='/pacientes/ficha_paciente/:id' component={FichaPaciente} />
-                    <Route exact path='/registro_sesion' component={RegistroSesion} />
+                    <Route exact path='/pacientes/registro_sesion/:id' component={RegistroSesion} />
                     <Route path='/prueba' component={PruebaDeComponentes} />
                 </Switch>
             </Layout>

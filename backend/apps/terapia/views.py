@@ -25,7 +25,27 @@ class TerapiaDetailView(APIView):
 
 class SesionListCreateView(ListCreateAPIView):
     serializer_class = SesionSerializer
-    queryset = Sesion.objects.all()
+
+    def get_object(self, pk):
+        try:
+            return Paciente.objects.get(pk=pk)
+        except Paciente.DoesNotExist:
+            raise Http404
+
+    def get_queryset(self, request, pk, format=None):
+        paciente = self.get_object(pk)
+        sesiones = Sesion.objects.filter(terapia__userAccount= request.user, terapia__paciente__id=paciente)
+        sesionSerializer = SesionSerializer(sesiones, many=True)
+        return Response(sesionSerializer.data)
+
+    def list(self, request):
+        print(Sesion.objects.filter(terapia__userAccount=self.request.user))
+        queryset = self.get_queryset()
+        serializer = SesionSerializer(queryset, many=True)
+        return Response(serializer.data)
+    
+
+    
 
         
         

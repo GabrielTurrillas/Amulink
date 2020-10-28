@@ -3,6 +3,7 @@ import React,{ useEffect, useState } from 'react';
 
 const FichaPaciente = (props) => {
     const idPaciente = props.match.params.id
+    console.log(props.match.params)
     const [paciente, setPaciente] = useState({})
     const [terapia, setTerapia] = useState({})
     const config = {
