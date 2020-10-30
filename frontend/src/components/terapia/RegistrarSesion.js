@@ -31,7 +31,8 @@ const RegistrarSesion = () => {
     const onSubmit = (data) => {
         const body = {...data, terapia, fechaSesion, fechaPago}
         console.log(body)
-        axios.post(`${process.env.REACT_APP_API_URL}/api/terapia/sesion/`, body , config).catch(err => console.log(err))
+        console.log(config)
+        axios.post(`${process.env.REACT_APP_API_URL}/api/terapia/sesion/`+idPaciente, body , config).catch(err => console.log(err))
     };
     return (    
         <Fragment>

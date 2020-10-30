@@ -1,5 +1,6 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const SesionLista = () => {
@@ -24,6 +25,7 @@ const SesionLista = () => {
             <p>NO HAY SESIONES</p>
         ) 
     }
+    
 
     return (
        <Fragment>
@@ -34,17 +36,21 @@ const SesionLista = () => {
                         <thead>
                             <tr>
                                 <th scope="col">Id</th>
-                                <th scope="col">Asistio</th>
                                 <th scope="col">Fecha Sesion</th>
+                                <th scope="col">Asistio</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {sesiones.map(({ id, asistio, fechaSesion }) =>
-                                <tr key={id} className='clickable-row'>
-                                    <th scope="row">{id}</th>
-                                    <td>{asistio}</td>
-                                    <td>{fechaSesion}</td>
-                                </tr>
+                            {sesiones.map(({ id, asistio, fechaSesion }) => {
+                                    const fechaSesionDate = new Date(fechaSesion);
+                                    return(
+                                        <tr key={id} className='clickable-row'>
+                                            <th scope="row">{id}</th>
+                                            <td><Link to={"sesion_detalle/"+id}>{fechaSesionDate.getDay()}/{fechaSesionDate.getMonth()}/{fechaSesionDate.getFullYear()}</Link></td>
+                                            <td>{asistio}</td>
+                                        </tr>
+                                    )
+                                }
                             )}
                         </tbody>
                     </table>
