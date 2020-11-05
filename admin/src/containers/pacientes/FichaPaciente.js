@@ -16,12 +16,12 @@ const FichaPaciente = () => {
 
     
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/api/paciente/`+idPaciente, config)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/paciente/admin/`+idPaciente, config)
         .then(res => setPaciente(res.data))
 
         axios.get(`${process.env.REACT_APP_API_URL}/api/terapia/`+idPaciente, config)
         .then(res => setTerapia(res.data))
-    },[])
+    },[idPaciente])
 
     
     const { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, fechaNacimiento, genero, direccion, comunaResidencia, ocupacionProfecion } = paciente

@@ -16,10 +16,17 @@ class PacienteListCreateView(ListCreateAPIView):
     queryset = Paciente.objects.all()
     permission_classes = [IsAdminUser]
 
+
 class PacienteView(RetrieveUpdateDestroyAPIView):
     queryset = Paciente.objects.all()
     serializer_class = PacienteSerializer
     permission_classes = [IsAuthenticatedOrReadOnly, PermisoTerapiaPaciente]
+
+
+class PacienteAdminView(RetrieveUpdateDestroyAPIView):
+    queryset = Paciente.objects.all()
+    serializer_class = PacienteSerializer
+    permission_classes = [IsAdminUser]
 
 
 class PacienteListView(ListAPIView):
