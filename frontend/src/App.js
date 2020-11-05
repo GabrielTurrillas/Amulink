@@ -1,9 +1,11 @@
 import React from 'react'; 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
 import Pacientes from './containers/pacientes/Pacientes';
 import pacienteDetalle from './containers/pacientes/PacienteDetalle';
 import FichaPaciente from './containers/pacientes/FichaPaciente';
-
 import PruebaDeComponentes from './components/PruebaDeComponentes';
 import Home from './containers/Home';
 import Login from './containers/accounts/Login';
@@ -13,10 +15,8 @@ import ResetPassword from './containers/accounts/ResetPassword';
 import ResetPasswordConfirm from './containers/accounts/ResetPasswordConfirm';
 import RegistroSesion from './containers/pacientes/RegistroSesion';
 import SesionDetalle from './containers/pacientes/SesionDetalle';
-
-import { Provider } from 'react-redux';
-import store from './redux/store';
 import Layout from './hocs/Layout';
+
 
 
 const App = () => (

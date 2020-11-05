@@ -28,7 +28,7 @@ const PacienteLista = () => {
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido Paterno</th>
                             <th scope="col">Telefono</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">Derivar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,7 +38,7 @@ const PacienteLista = () => {
                                 <td><Link to={"pacientes/"+id}>{nombre}</Link></td>
                                 <td><Link to={"pacientes/"+id}>{apellidoPaterno}</Link></td>
                                 <td><Link to={"pacientes/"+id}>{telefono}</Link></td>
-                                <td><Link to={"pacientes/"+id}>{email}</Link></td>
+                                <td><Link className='btn btn-primary btn-sm' to={'/derivacion/'+id} role='button'>Derivar</Link></td>
                             </tr>
                         )}
                     </tbody>

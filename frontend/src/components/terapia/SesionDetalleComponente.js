@@ -22,6 +22,18 @@ const SesionDetalleComponente = () => {
     const fechaSesionDate = new Date(fechaSesion)
     const fechaPagoDate = new Date(fechaPago)
 
+    if(pago){
+        var pagoString = 'Pago Realizado'
+    } else {
+        var pagoString = 'No a Pagado'
+    }
+
+    if(asistio){
+        var asistioString = 'Asistio'
+    } else {
+        var asistioString = 'No Asistio'
+    }
+
     return (
         <Fragment>
             <div className='ml-4 mr-4'>
@@ -31,12 +43,12 @@ const SesionDetalleComponente = () => {
                         <p className='font-weight-light'>Fecha de la Sesion: {fechaSesionDate.getDay()}/{fechaSesionDate.getMonth()}/{fechaSesionDate.getFullYear()}</p>
                     </div>
                     <div className='col'>
-                        <p className='font-weight-light'>Modalidad: { modalidad }</p>
+                        <p className='font-weight-light'>Modalidad: {modalidad}</p>
                     </div>
                 </div>
                 <div className='row ml-3 mt-3'>
                     <div className='col'>
-                        <p className='font-weight-light'>Notas de la Sesion: { notasSesion }</p>
+                        <p className='font-weight-light'>Notas de la Sesion: {notasSesion}</p>
                     </div>
                     <div className='col'>
                         <p className='font-weight-light'>Fecha de Pago: {fechaPagoDate.getDay()}/{fechaPagoDate.getMonth()}/{fechaPagoDate.getFullYear()}</p>
@@ -44,42 +56,10 @@ const SesionDetalleComponente = () => {
                 </div>
                 <div className='row ml-3 mt-3'>
                     <div className='col'>
-                        <p className='font-weight-light'>Telefono: {  }</p>
+                        <p className='font-weight-light'>Pago?: {pagoString}</p>
                     </div>
                     <div className='col'>
-                        <p className='font-weight-light'>Email: {  }</p>
-                    </div>
-                </div>
-                <div className='row ml-3 mt-3'>
-                    <div className='col'>
-                        <p className='font-weight-light'>Genero: {  }</p>
-                    </div>
-                    <div className='col'>
-                        <p className='font-weight-light'>Direccion: {  }</p>
-                    </div>
-                </div>
-                <div className='row ml-3 mt-3'>
-                    <div className='col'>
-                        <p className='font-weight-light'>Comuna de Residencia: {  }</p>
-                    </div>
-                    <div className='col'>
-                        <p className='font-weight-light'>Fecha de Nacimiento: { }</p>
-                    </div>
-                </div>
-                <div className='row ml-3 mt-3'>
-                    <div className='col'>
-                        <p className='font-weight-light'>Ocupacion o Profecion: {  }</p>
-                    </div>
-                    <div className='col'>
-                        <p className='font-weight-light'>Tipo de Terapia: {  }</p>
-                    </div>
-                </div>
-                <div className='row ml-3 mt-3'>
-                    <div className='col'>
-                        <p className='font-weight-light'>Motivo de Consulta: {  }</p>
-                    </div>
-                    <div className='col'>
-                        <p className='font-weight-light'>Captacion: { }</p>
+                        <p className='font-weight-light'>Asistencia: {asistioString}</p>
                     </div>
                 </div>
                 <div className='row ml-3 mt-3'>

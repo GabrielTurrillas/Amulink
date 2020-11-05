@@ -37,17 +37,30 @@ const SesionLista = () => {
                             <tr>
                                 <th scope="col">Id</th>
                                 <th scope="col">Fecha Sesion</th>
-                                <th scope="col">Asistio</th>
+                                <th scope="col">Asistencia</th>
+                                <th scope="col">Pago</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {sesiones.map(({ id, asistio, fechaSesion }) => {
+                            {sesiones.map(({ id, asistio, fechaSesion, pago }) => {
                                     const fechaSesionDate = new Date(fechaSesion);
+                                    if(pago) {
+                                        var pagoString = 'Pago Realizado'
+                                    } else {
+                                        var pagoString = 'No a Pagado'
+                                    }
+
+                                    if(asistio) {
+                                        var asistioString = 'Asistio'
+                                    } else {
+                                        var asistioString = 'No Asistio'
+                                    }
                                     return(
                                         <tr key={id} className='clickable-row'>
                                             <th scope="row">{id}</th>
                                             <td><Link to={"sesion_detalle/"+id}>{fechaSesionDate.getDay()}/{fechaSesionDate.getMonth()}/{fechaSesionDate.getFullYear()}</Link></td>
-                                            <td>{asistio}</td>
+                                            <td><Link to={"sesion_detalle/"+id}>{asistioString}</Link></td>
+                                            <td><Link to={"sesion_detalle/"+id}>{pagoString}</Link></td>
                                         </tr>
                                     )
                                 }

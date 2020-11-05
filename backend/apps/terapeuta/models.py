@@ -2,7 +2,7 @@ from datetime import datetime
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from apps.accounts.models import UserAccount
+from ..accounts.models import UserAccount
 
 class PerfilTerapeuta(models.Model):
     userAccount = models.OneToOneField(UserAccount, related_name='perfilTerapeuta' ,on_delete=models.CASCADE)
