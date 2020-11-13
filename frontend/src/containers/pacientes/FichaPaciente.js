@@ -1,26 +1,35 @@
-import axios from 'axios';
+import axios from '../../axios';
 import React,{ useEffect, useState } from 'react';
 
 const FichaPaciente = (props) => {
     const idPaciente = props.match.params.id
     const [paciente, setPaciente] = useState({})
     const [terapia, setTerapia] = useState({})
-    const config = {
-        headers: {
+    const headers = {
+        headers:{
             'Content-Type': 'application/json',
             'Authorization': `JWT ${localStorage.getItem('access')}`,
             'Accept': 'application/json'
         }
-    };
-
-    
+    }
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/api/paciente/`+idPaciente, config)
-        .then(res => setPaciente(res.data))
+        async function fetchData() {
+            const response = await axios.get("/api/paciente/"+idPaciente, headers);
+            setPaciente(response.data)
+            return response;
+        };
+        fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[idPaciente]);
 
-        axios.get(`${process.env.REACT_APP_API_URL}/api/terapia/`+idPaciente, config)
-        .then(res => setTerapia(res.data))
-    },[])
+    useEffect(() => {
+        async function fetchData() {
+            const response = await axios.get("/api/terapia/"+idPaciente);
+            setTerapia(response.data);
+            return response
+        };
+        fetchData();
+    },[idPaciente]);
 
     
     const { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, fechaNacimiento, genero, direccion, comunaResidencia, ocupacionProfecion } = paciente

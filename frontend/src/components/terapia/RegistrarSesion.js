@@ -1,43 +1,32 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import DatePicker from 'react-datepicker';
+import { agregarSesiones, fetchTerapia } from '../../redux/actions/terapiaActions';
 
 import "react-datepicker/dist/react-datepicker.css";
 
 const RegistrarSesion = () => {
     const { id:idPaciente } = useParams()
-    const [instanciaTerapia, setInstanciaTerapia] = useState({})
+    const instanciaTerapia = useSelector(state => state.terapiaReducer.terapia)
+    const [{id:terapia}] = instanciaTerapia
+    console.log('instanciaTerapia:',instanciaTerapia)
+    console.log('idTerapia:', terapia)
     const [fechaSesion, setFechaSesion] = useState(new Date())
     const [fechaPago, setFechaPago] = useState(new Date())
-
     const {register, handleSubmit, errors} = useForm();
-    const config = {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `JWT ${localStorage.getItem('access')}`,
-            'Accept': 'application/json'
-        }
-    };
-
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/api/terapia/`+idPaciente, config)
-        .then(res => setInstanciaTerapia(res.data))
-    },[])
-
-    const { id:terapia } = instanciaTerapia
-
+    const dispatch = useDispatch();
     const onSubmit = (data) => {
-        const body = {...data, terapia, fechaSesion, fechaPago}
-        console.log(body)
-        console.log(config)
-        axios.post(`${process.env.REACT_APP_API_URL}/api/terapia/sesion/`+idPaciente, body , config).catch(err => console.log(err))
+        const body = {...data, terapia, fechaSesion, fechaPago};
+        console.log('body:',body)
+        dispatch(agregarSesiones(body, idPaciente));
     };
+    useEffect(() => {
+        dispatch(fetchTerapia(idPaciente));
+    },[dispatch]);
     return (    
         <Fragment>
-            <h1 className="mt-4 ml-4 display-4">Registro de Sesion</h1>
-            <p className="lead ml-4 mb-5">Registra una sesion</p>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='row ml-2 mr-2'>
                     <div className='form-group col-6'>
@@ -107,7 +96,7 @@ const RegistrarSesion = () => {
                         />
                     </div>
                 </div>
-                <button className='ml-4 btn btn-success' type='submit'>Registrar</button>
+                <button className='ml-4 btn btn-success' type='submit' to={'pacientes/'+idPaciente} >Registrar</button>
             </form>
         </Fragment>
     );

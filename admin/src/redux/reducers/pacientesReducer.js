@@ -28,8 +28,8 @@ const pacientesReducer = (state=initialState, action) => {
         case ADD_PACIENTE_SUCCESS:
             return {
                 ...state,
-                pacientes: [...state.pacientes, action.payload],
-                errors:''
+                pacientes: [action.payload, ...state.pacientes],
+                errors:'',
             }
         case ADD_PACIENTE_FAILURE:
             return {
@@ -44,11 +44,3 @@ const pacientesReducer = (state=initialState, action) => {
 export default pacientesReducer;
 
 
-
-
-/* import { combineReducers } from 'redux';
-import pacientesReducer from './pacientesReducer';
-
-export default combineReducers({
-    pacientes: pacientesReducer
-}); */

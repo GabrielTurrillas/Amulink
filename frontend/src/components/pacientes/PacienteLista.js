@@ -20,7 +20,7 @@ const PacienteLista = () => {
     }
     return (
         <Fragment>
-            <div className='card mt-4 ml-4 mr-4'>
+            <div className='card ml-4 mr-4'>
                 <table className="table table-hover">
                     <thead>
                         <tr>

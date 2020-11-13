@@ -26,7 +26,7 @@ const Home = ({ isAuthenticated }) => {
         <div className='jumbotron mt-5'>
             <div className='ml-4 mr-4'>
                 <h1 className='display-4'>Amülink</h1>
-                <p className='lead'>Desarrollo de Amülink</p>
+                <p className='lead'>Admin</p>
             </div>
                 {isAuthenticated ? showPacienteLista() : hide()}
                 {isAuthenticated ? showIngresarPacienteButton() : showLoginButton()}

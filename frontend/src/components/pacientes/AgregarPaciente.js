@@ -1,8 +1,7 @@
-import React, { Fragment ,useState, useEffect } from 'react';
+import React, { Fragment ,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import DatePicker from "react-datepicker";
-import { load_user } from '../../redux/actions/auth';
 import { agregarPacientes } from '../../redux/actions/pacientes'
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,9 +11,6 @@ const AgregarPaciente = () => {
     const {register, handleSubmit, errors} = useForm();
     const dispatch = useDispatch();
     const user = useSelector(state => state.auth.user);
-    useEffect(() => {
-        load_user(); //revisar que pasa si no esta logeado el usuario
-    }, []);
 
     const onSubmit = (data) => {
         dispatch(agregarPacientes(user, startDate, data))
@@ -162,7 +158,7 @@ const AgregarPaciente = () => {
                         <div className='col-6'>
                             <div className='row'>
                                 <div className='form-group col-12'>
-                                    <label for="fechaNacimiento" className='mr-3'>Fecha de Nacimiento</label>
+                                    <label htmlFor="fechaNacimiento" className='mr-3'>Fecha de Nacimiento</label>
                                     <DatePicker
                                         className='form-control' 
                                         id='fechaNacimiento' 

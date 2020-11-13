@@ -44,7 +44,6 @@ export const agregarPacientes = (user, startDate ,{ rut, nombre, apellidoPaterno
     const fechaNacimiento = startDate
     const { id:userAccount } = user
     const body = JSON.stringify({ rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, fechaNacimiento, genero, direccion, comunaResidencia, ocupacionProfecion, userAccount});
-    console.log('userAccount:', userAccount)
     axios.post(`${process.env.REACT_APP_API_URL}/api/paciente/`, body, config)
         .then(res =>{
             dispatch({

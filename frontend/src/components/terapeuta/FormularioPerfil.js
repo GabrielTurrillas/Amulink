@@ -1,30 +1,76 @@
-import React, { Fragment ,useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { Fragment, useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import DatePicker from "react-datepicker";
-import { load_user } from '../../redux/actions/auth';
-import { agregarPacientes } from '../../redux/actions/pacientes'
+import axios from '../../axios';
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const AgregarPaciente = () => {
-    const [startDate, setStartDate] = useState(new Date()); 
+const FormularioPerfil = () => {
+    const [perfil, setPerfil]= useState({
+        userAccount: '',
+        rut:'',
+        nombre:'',
+        apellidoPaterno:'',
+        apellidoMaterno:'',
+        telefono:'',
+        email:'',
+        genero:'',
+        fechaNacimiento:''
+    });
+    const [startDate, setStartDate] = useState(new Date());
     const {register, handleSubmit, errors} = useForm();
-    const dispatch = useDispatch();
+    const headers = {
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': `JWT ${localStorage.getItem('access')}`,
+            'Accept': 'application/json'
+        }
+    } 
     useEffect(() => {
-        load_user(); //revisar que pasa si no esta logeado el usuario
-    }, []);
+        async function fetchData() {
+            const response = await axios.get("/api/terapeuta/perfil", headers);
+            setPerfil(response.data);
+            return response;
+        }
+        fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
+    const { userAccount, rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, fechaNacimiento } = perfil
+    /* const fechaNacimientoDate = new Date(fechaNacimiento) */
 
-    const onSubmit = (data) => {
-        dispatch(agregarPacientes(startDate, data));
-    };
     
-    return(
+    const onSubmit = (data) => {
+        const { userAccount, rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero } = data
+        const body = JSON.stringify({userAccount, rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, fechaNacimiento})
+        console.log('Data:', body);
+        async function postData() {
+            const response = await axios.put("/api/terapeuta/modificar_perfil", body);
+            console.log(response.data);
+            return response;
+        };
+        postData();
+    };
+
+    return (
         <Fragment>
             <div className='ml-4 mr-4'>
-                <h1 className='display-4'>Pacientes</h1>
-                <p className='lead'>Ingresa un Paciente</p>
+                <h1 className='display-4'>Perfil</h1>
+                <p className='lead'>Ingresa tu Perfil</p>
                 <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className='row'>
+                        <div className='form-group col-6'>
+                            <input
+                                className='form-control' 
+                                type="text"
+                                name="userAccount" 
+                                placeholder="userAccount"
+                                defaultValue={userAccount}
+                                ref={register({
+                                    required:'Campo "Rut" obligatorio',
+                                })}
+                            /> 
+                        </div>
+                    </div>
                     <div className='row'>
                         <div className='form-group col-6'>
                             <input
@@ -32,6 +78,7 @@ const AgregarPaciente = () => {
                                 type="text"
                                 name="rut" 
                                 placeholder="Rut"
+                                defaultValue={rut}
                                 ref={register({
                                     required:'Campo "Rut" obligatorio',
                                 })}
@@ -44,6 +91,7 @@ const AgregarPaciente = () => {
                                 type="text"
                                 name="nombre" 
                                 placeholder="Nombre"
+                                defaultValue={nombre}
                                 ref={register({
                                     required: 'Campo "nombre" obligatorio',
                                     minLength: {value: 2, message: 'campo "nombre" debe tener mas de 1 caracter'}
@@ -59,6 +107,7 @@ const AgregarPaciente = () => {
                                 type="text"
                                 name="apellidoPaterno" 
                                 placeholder="Apellido Paterno"
+                                defaultValue={apellidoPaterno}
                                 ref={register({
                                     required:'Campo "Apellido Paterno" obligatorio',
                                 })}
@@ -71,6 +120,7 @@ const AgregarPaciente = () => {
                                 type="text" 
                                 name="apellidoMaterno" 
                                 placeholder="Apellido Materno"
+                                defaultValue={apellidoMaterno}
                                 ref={register({
                                     required:'Campo "Apellido Materno" obligatorio',
                                     minLength: {value: 2, message: 'campo "Apellido Materno" debe tener mas de 1 caracter'}
@@ -86,6 +136,7 @@ const AgregarPaciente = () => {
                                 type="text"
                                 name="telefono" 
                                 placeholder="Telefono"
+                                defaultValue={telefono}
                                 ref={register({
                                     required:'Campo "Telefono" obligatorio',
                                 })}
@@ -98,6 +149,7 @@ const AgregarPaciente = () => {
                                 type="text"
                                 name="email" 
                                 placeholder="Email"
+                                defaultValue={email}
                                 ref={register({
                                     required:'Campo "Email" obligatorio',
                                 })}
@@ -112,56 +164,17 @@ const AgregarPaciente = () => {
                                 type="text"
                                 name="genero" 
                                 placeholder="Genero"
+                                defaultValue={genero}
                                 ref={register({
                                     required:'Campo "Genero" obligatorio',
                                 })}
                             /> 
                         {errors.genero && <p>{errors.genero.message}</p>}
                         </div>
-                        <div className='form-group col-6'>
-                            <input
-                                className='form-control' 
-                                type="text"
-                                name="direccion" 
-                                placeholder="Direccion"
-                                ref={register({
-                                    required:'Campo "Direccion" obligatorio',
-                                })}
-                            /> 
-                            {errors.direccion && <p>{errors.direccion.message}</p>}
-                        </div>
-                    </div>
-                    <div className='row'>
-                        <div className='form-group col-6'>
-                            <input
-                                className='form-control' 
-                                type="text"
-                                name="comunaResidencia" 
-                                placeholder="Comuna de residencia"
-                                ref={register({
-                                    required:'Campo "Comuna de residencia" obligatorio',
-                                })}
-                            />
-                            {errors.comunaResidencia && <p>{errors.comunaResidencia.message}</p>}
-                        </div>
-                        <div className='form-group col-6'> 
-                            <input
-                                className='form-control' 
-                                type="text"
-                                name="ocupacionProfecion" 
-                                placeholder="Ocupacion o Profecion"
-                                ref={register({
-                                    required:'Campo "Ocupacion o Profecion" obligatorio',
-                                })}
-                            />
-                            {errors.ocupacionProfecion && <p>{errors.ocupacionProfecion.message}</p>}
-                        </div>
-                    </div> 
-                    <div className='row'>
                         <div className='col-6'>
                             <div className='row'>
                                 <div className='form-group col-12'>
-                                    <label for="fechaNacimiento" className='mr-3'>Fecha de Nacimiento</label>
+                                    <label htmlFor="fechaNacimiento" className='mr-3'>Fecha de Nacimiento</label>
                                     <DatePicker
                                         className='form-control' 
                                         id='fechaNacimiento' 
@@ -177,7 +190,6 @@ const AgregarPaciente = () => {
             </div>
         </Fragment>
     );
-};
+}
 
-export default AgregarPaciente;
-
+export default FormularioPerfil;

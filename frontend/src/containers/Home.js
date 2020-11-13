@@ -15,12 +15,6 @@ const Home = ({ isAuthenticated }) => {
     const showPacienteLista = () => (
         <PacienteLista />
     ) 
-    const showIngresarPacienteButton = () => (
-        <Fragment>
-            <Link className='btn btn-primary mt-4 ml-4' to='/Pacientes' role='button'>Ingresar Paciente</Link>
-        </Fragment>
-    )
-
     return (
     <div className='container'>
         <div className='jumbotron mt-5'>
@@ -29,7 +23,7 @@ const Home = ({ isAuthenticated }) => {
                 <p className='lead'>Desarrollo de Amülink</p>
             </div>
                 {isAuthenticated ? showPacienteLista() : hide()}
-                {isAuthenticated ? showIngresarPacienteButton() : showLoginButton()}
+                {isAuthenticated ? hide() : showLoginButton()}
         </div>
     </div>
     )

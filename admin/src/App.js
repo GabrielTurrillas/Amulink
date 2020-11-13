@@ -8,6 +8,7 @@ import Login from './containers/accounts/Login';
 import Pacientes from './containers/pacientes/Pacientes';
 import Derivacion from './containers/pacientes/Derivacion';
 import Layout from './hocs/Layout';
+import PruebaComponente from './containers/PruebaComponentes';
 
 
 const App = () => (
@@ -19,6 +20,7 @@ const App = () => (
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/pacientes' component={Pacientes} />
                     <Route exact path='/derivacion/:id' component={Derivacion} />
+                    <Route exact path='/prueba' component={PruebaComponente}/>
                 </Switch>
             </Layout>
         </Router>

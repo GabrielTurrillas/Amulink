@@ -1,6 +1,6 @@
 from django.db import models
-from apps.paciente.models import Paciente
-from apps.accounts.models import UserAccount
+from ..paciente.models import Paciente
+from ..accounts.models import UserAccount
 
 class TipoTerapia(models.Model):
     tipoTerapia = models.CharField(max_length=50)
@@ -30,4 +30,7 @@ class Sesion(models.Model):
     modalidad = models.CharField(max_length=30, blank=True, null=True)
     notasSesion = models.TextField(blank=True, null=True)
     fechaPago = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['-id']
     

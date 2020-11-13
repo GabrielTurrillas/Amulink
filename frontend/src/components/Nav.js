@@ -7,10 +7,7 @@ const Nav = ({ logout, isAuthenticated }) => {
     const guestLinks = () => (
         <Fragment>
             <li className='nav-item'>
-                <Link className='nav-link' to='/login'>Login</Link>
-            </li>
-            <li className='nav-item'>
-                <Link className='nav-link' to='/signup'>Sign Up</Link>
+                <Link className='nav-link' to='/login'>Registro</Link>
             </li>
         </Fragment>
     );
@@ -19,6 +16,12 @@ const Nav = ({ logout, isAuthenticated }) => {
         <Fragment>
             <li className='nav-item'>
                 <Link className='nav-link' to='/pacientes'>Pacientes</Link>
+            </li>
+            <li className='nav-item'>
+                <Link className='nav-link' to='/perfil' >Perfil</Link>
+            </li>
+            <li className='nav-item'>
+                <Link className='nav-link' to='/resumen_mensual'>Resumen Mensual</Link>
             </li>
             <li className='nav-item'>
                 <a className='nav-link' href='/' onClick={logout}>Logout</a>
