@@ -9,9 +9,9 @@ import {
 
 const initialState = {
     sesiones: [],
-    terapia:[{
+    terapia: {
         id:''
-    }],
+    },
     errors:'',
 }
 
@@ -42,7 +42,7 @@ const terapiaReducer = (state=initialState, action) => {
         case FETCH_TERAPIA_SUCCESS:
             return {
                 ...state,
-                terapia: [action.payload],
+                terapia: action.payload,
                 errors: '',
             }
         case FETCH_TERAPIA_FAILURE:

@@ -1,35 +1,18 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchPerfil } from '../../redux/actions/terapeutaActions';
 
 const DetallePerfil = () => {
-    const [perfil, setPerfil]= useState({
-        userAccount: '',
-        rut:'',
-        nombre:'',
-        apellidoPaterno:'',
-        apellidoMaterno:'',
-        telefono:'',
-        email:'',
-        genero:'',
-        fechaNacimiento:''
-    })
-    const config = {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `JWT ${localStorage.getItem('access')}`,
-            'Accept': 'application/json'
-        }
-    };
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/api/terapeuta/perfil`, config)
-        .then(res => setPerfil(res.data))
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    const perfil = useSelector(state => state.terapeutaReducer.perfil);
+    const dispatch = useDispatch();
 
-    const { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, fechaNacimiento } = perfil
+    useEffect(() => {
+        dispatch(fetchPerfil());
+    }, [dispatch]);
+
+    const { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, fechaNacimiento } = perfil;
     const fechaNacimientoDate = new Date(fechaNacimiento);
-    
     
     return (
         <Fragment>
@@ -71,6 +54,6 @@ const DetallePerfil = () => {
             </div>
         </Fragment>
     );
-}
+};
 
 export default DetallePerfil;

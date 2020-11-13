@@ -2,12 +2,15 @@ import {
     FETCH_PACIENTES_SUCCESS, 
     FETCH_PACIENTES_FAILURE,
     ADD_PACIENTE_SUCCESS,
-    ADD_PACIENTE_FAILURE 
+    ADD_PACIENTE_FAILURE,
+    FETCH_PACIENTE_DETALLE_SUCCESS,
+    FETCH_PACIENTE_DETALLE_FAILURE 
 } from '../actions/types';
 
 
 const initialState = {
     pacientes: [],
+    pacienteDetalle: {},
     errors: '',
 };
 
@@ -36,6 +39,16 @@ const pacientesReducer = (state=initialState, action) => {
                 ...state,
                 errors: action.payload,
             }
+        case FETCH_PACIENTE_DETALLE_SUCCESS:
+            return {
+                ...state,
+                pacienteDetalle: action.payload
+            }
+        case FETCH_PACIENTE_DETALLE_FAILURE:
+            return {
+                ...state,
+                errors: action.payload,
+            }
         default:
             return state
     }
@@ -43,12 +56,3 @@ const pacientesReducer = (state=initialState, action) => {
 
 export default pacientesReducer;
 
-
-
-
-/* import { combineReducers } from 'redux';
-import pacientesReducer from './pacientesReducer';
-
-export default combineReducers({
-    pacientes: pacientesReducer
-}); */

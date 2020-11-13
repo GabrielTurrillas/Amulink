@@ -3,7 +3,7 @@ import SesionLista from '../../components/terapia/SesionLista';
 import { Link } from 'react-router-dom';
 
 
-const PacienteDetalle = (props) => {
+const PacienteDashBoard = (props) => {
     const idPaciente = props.match.params.id
     return (
         <div className='container'>
@@ -18,4 +18,4 @@ const PacienteDetalle = (props) => {
     );
 }
     
-export default PacienteDetalle;
+export default PacienteDashBoard;

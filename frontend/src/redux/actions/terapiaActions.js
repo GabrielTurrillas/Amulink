@@ -26,8 +26,9 @@ export const fetchSesiones = (idPaciente) => async dispatch => {
     .catch(err => {
         dispatch({
             type: FETCH_SESIONES_FAILURE,
-        })
-        console.log(err)
+            payload: err.data
+        });
+        console.log(err);
     });
 };
 
@@ -49,6 +50,7 @@ export const fetchTerapia = (idPaciente) => async dispatch => {
     .catch(err => {
         dispatch({
             type: FETCH_TERAPIA_FAILURE,
+            payload: err.data
         })
         console.log(err)
     });

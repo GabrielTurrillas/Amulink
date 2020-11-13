@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 import Pacientes from './containers/pacientes/Pacientes';
-import pacienteDetalle from './containers/pacientes/PacienteDetalle';
+import PacienteDashBoard from './containers/pacientes/PacienteDashBoard';
 import FichaPaciente from './containers/pacientes/FichaPaciente';
 import PruebaDeComponentes from './components/PruebaDeComponentes';
 import Home from './containers/Home';
@@ -32,7 +32,7 @@ const App = () => (
                     <Route exact path='/reset-password' component={ResetPassword} />
                     <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                     <Route exact path='/activate/:uid/:token' component={Activate} />
-                    <Route exact path='/pacientes/:id' component={pacienteDetalle} />
+                    <Route exact path='/pacientes/:id' component={PacienteDashBoard} />
                     <Route exact path='/pacientes/ficha_paciente/:id' component={FichaPaciente} />
                     <Route exact path='/pacientes/registro_sesion/:id' component={RegistroSesion} />
                     <Route exact path='/pacientes/sesion_detalle/:id' component={SesionDetalle} />
