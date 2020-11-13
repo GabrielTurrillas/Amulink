@@ -1,54 +1,29 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useSelector, useDispatch } from 'react-redux';
 import DatePicker from "react-datepicker";
-import axios from '../../axios';
+import { putPerfil, fetchPerfil } from '../../redux/actions/terapeutaActions';
 
 import "react-datepicker/dist/react-datepicker.css";
 
 const FormularioPerfil = () => {
-    const [perfil, setPerfil]= useState({
-        userAccount: '',
-        rut:'',
-        nombre:'',
-        apellidoPaterno:'',
-        apellidoMaterno:'',
-        telefono:'',
-        email:'',
-        genero:'',
-        fechaNacimiento:''
-    });
+    const perfil = useSelector(state => state.terapeutaReducer.perfil)
+    const dispatch = useDispatch();
     const [startDate, setStartDate] = useState(new Date());
     const {register, handleSubmit, errors} = useForm();
-    const headers = {
-        headers:{
-            'Content-Type': 'application/json',
-            'Authorization': `JWT ${localStorage.getItem('access')}`,
-            'Accept': 'application/json'
-        }
-    } 
+
     useEffect(() => {
-        async function fetchData() {
-            const response = await axios.get("/api/terapeuta/perfil", headers);
-            setPerfil(response.data);
-            return response;
-        }
-        fetchData();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+        dispatch(fetchPerfil());
+    },[dispatch]);
+
     const { userAccount, rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, fechaNacimiento } = perfil
     /* const fechaNacimientoDate = new Date(fechaNacimiento) */
 
-    
     const onSubmit = (data) => {
         const { userAccount, rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero } = data
         const body = JSON.stringify({userAccount, rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, fechaNacimiento})
         console.log('Data:', body);
-        async function postData() {
-            const response = await axios.put("/api/terapeuta/modificar_perfil", body);
-            console.log(response.data);
-            return response;
-        };
-        postData();
+        dispatch(putPerfil(body));
     };
 
     return (

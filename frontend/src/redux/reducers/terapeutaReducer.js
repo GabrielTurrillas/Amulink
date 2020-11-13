@@ -1,6 +1,8 @@
 import {
     FETCH_PERFIL_SUCCESS,
-    FETCH_SESIONES_FAILURE
+    FETCH_PERFIL_FAILURE,
+    PUT_PERFIL_SUCCESS,
+    PUT_PERFIL_FAILURE
 } from '../actions/types';
 
 const initialState = {
@@ -26,7 +28,18 @@ const terapeutaReducer = (state=initialState, action) => {
                 perfil: action.payload,
                 errors:'',
             };
-        case FETCH_SESIONES_FAILURE:
+        case FETCH_PERFIL_FAILURE:
+            return {
+                ...state,
+                errors: action.payload,
+            };
+        case PUT_PERFIL_SUCCESS:
+            return {
+                ...state,
+                perfil: action.payload,
+                errors:'',
+            };
+        case PUT_PERFIL_FAILURE:
             return {
                 ...state,
                 errors: action.payload,

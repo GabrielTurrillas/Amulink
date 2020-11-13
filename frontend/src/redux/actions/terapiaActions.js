@@ -56,8 +56,6 @@ export const fetchTerapia = (idPaciente) => async dispatch => {
     });
 };
 
-
-
 export const agregarSesiones = (body, idPaciente) => async dispatch => {
     const config = {
         headers: {
