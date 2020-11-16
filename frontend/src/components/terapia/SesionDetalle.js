@@ -1,16 +1,16 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSesion } from '../../redux/actions/terapiaActions';
 
-const SesionDetalleComponente = () => {
+const SesionDetalle = () => {
     const { id:idSesion } = useParams()
     const dispatch = useDispatch();
     const sesion = useSelector(state => state.terapiaReducer.sesion)
 
     useEffect(()=>{
         dispatch(fetchSesion(idSesion));
-    }, [dispatch])
+    }, [dispatch, idSesion])
     
     const { pago, asistio, fechaSesion, modalidad, notasSesion, fechaPago } = sesion
     const fechaSesionDate = new Date(fechaSesion)
@@ -62,4 +62,4 @@ const SesionDetalleComponente = () => {
     );
 }
 
-export default SesionDetalleComponente;
+export default SesionDetalle;

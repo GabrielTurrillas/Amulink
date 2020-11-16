@@ -1,19 +1,20 @@
-import React, { Fragment ,useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { Fragment , useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import DatePicker from "react-datepicker";
 import { agregarPacientes } from '../../redux/actions/pacientes'
 
 import "react-datepicker/dist/react-datepicker.css";
-
-const AgregarPaciente = () => {
+/* componentes:
+    AgregarPacientes.js
+*/
+const FormularioPaciente = () => {
     const [startDate, setStartDate] = useState(new Date()); 
     const {register, handleSubmit, errors} = useForm();
     const dispatch = useDispatch();
-    const user = useSelector(state => state.auth.user);
 
     const onSubmit = (data) => {
-        dispatch(agregarPacientes(user, startDate, data))
+        dispatch(agregarPacientes(startDate, data));
     };
     
     return(
@@ -158,7 +159,7 @@ const AgregarPaciente = () => {
                         <div className='col-6'>
                             <div className='row'>
                                 <div className='form-group col-12'>
-                                    <label htmlFor="fechaNacimiento" className='mr-3'>Fecha de Nacimiento</label>
+                                    <label for="fechaNacimiento" className='mr-3'>Fecha de Nacimiento</label>
                                     <DatePicker
                                         className='form-control' 
                                         id='fechaNacimiento' 
@@ -176,5 +177,5 @@ const AgregarPaciente = () => {
     );
 };
 
-export default AgregarPaciente;
+export default FormularioPaciente;
 

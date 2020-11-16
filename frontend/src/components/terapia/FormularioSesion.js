@@ -10,7 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const RegistrarSesion = () => {
     const { id:idPaciente } = useParams()
     const instanciaTerapia = useSelector(state => state.terapiaReducer.terapia)
-    const [{id:terapia}] = instanciaTerapia
+    const {id:terapia} = instanciaTerapia
     console.log('instanciaTerapia:',instanciaTerapia)
     console.log('idTerapia:', terapia)
     const [fechaSesion, setFechaSesion] = useState(new Date())
@@ -24,7 +24,7 @@ const RegistrarSesion = () => {
     };
     useEffect(() => {
         dispatch(fetchTerapia(idPaciente));
-    },[dispatch]);
+    },[dispatch, idPaciente]);
     return (    
         <Fragment>
             <form onSubmit={handleSubmit(onSubmit)}>

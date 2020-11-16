@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPacienteDetalle } from '../../redux/actions/pacientes';
 import { fetchTerapia } from '../../redux/actions/terapiaActions';
-
+/* Containers:
+    FichaPaciente.js
+*/
 const PacienteDetalle = () => {
     const { id:idPaciente } = useParams();
     const dispatch = useDispatch();

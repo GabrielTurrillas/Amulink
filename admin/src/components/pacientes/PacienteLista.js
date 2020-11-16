@@ -2,7 +2,10 @@ import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPacientes } from '../../redux/actions/pacientes';
 import { Link } from 'react-router-dom';
-
+/* Containers:
+    AgregarPacientes.js
+    Home.js
+*/
 const PacienteLista = () => {
     const dispatch = useDispatch();
     const pacientes = useSelector(state => state.pacientesReducer.pacientes)

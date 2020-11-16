@@ -14,7 +14,7 @@ import Activate from './containers/accounts/Activate';
 import ResetPassword from './containers/accounts/ResetPassword';
 import ResetPasswordConfirm from './containers/accounts/ResetPasswordConfirm';
 import RegistroSesion from './containers/pacientes/RegistroSesion';
-import SesionDetalle from './containers/pacientes/SesionDetalle';
+import FichaSesion from './containers/pacientes/FichaSesion';
 import Perfil from './containers/terapeuta/Perfil';
 import Layout from './hocs/Layout';
 import ModificarPerfil from './containers/terapeuta/ModificarPerfil';
@@ -35,7 +35,7 @@ const App = () => (
                     <Route exact path='/pacientes/:id' component={PacienteDashBoard} />
                     <Route exact path='/pacientes/ficha_paciente/:id' component={FichaPaciente} />
                     <Route exact path='/pacientes/registro_sesion/:id' component={RegistroSesion} />
-                    <Route exact path='/pacientes/sesion_detalle/:id' component={SesionDetalle} />
+                    <Route exact path='/pacientes/ficha_sesion/:id' component={FichaSesion} />
                     <Route exact path='/perfil' component={Perfil} />
                     <Route exact path='/modificar_perfil' component={ModificarPerfil} />
                     <Route exact path='/resumen_mensual' component={ResumenMensual} />

@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import FichaPaciente from '../../containers/pacientes/FichaPaciente';
-
+/* Containers:
+    Derivacion.js
+ */
 const DerivacionPacientes = () => {
     return (
         <Fragment>

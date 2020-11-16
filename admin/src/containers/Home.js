@@ -17,7 +17,7 @@ const Home = ({ isAuthenticated }) => {
     ) 
     const showIngresarPacienteButton = () => (
         <Fragment>
-            <Link className='btn btn-primary mt-4 ml-4' to='/Pacientes' role='button'>Ingresar Paciente</Link>
+            <Link className='btn btn-primary mt-4 ml-4' to='pacientes' role='button'>Ingresar Paciente</Link>
         </Fragment>
     )
 

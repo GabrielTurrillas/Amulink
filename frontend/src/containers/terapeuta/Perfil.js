@@ -1,11 +1,11 @@
 import React from 'react';
-import DetallePerfil from '../../components/terapeuta/DetallePerfil'
+import FichaPerfil from '../../components/terapeuta/FichaPerfil'
 
 const Perfil = () => {
     return (
         <div className='container mt-5'>
             <div className='jumbotron mt-5'>
-                <DetallePerfil />
+                <FichaPerfil />
             </div>
         </div>
     );

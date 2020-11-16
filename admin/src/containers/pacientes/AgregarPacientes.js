@@ -1,16 +1,16 @@
 import React from 'react';
 import PacienteLista from '../../components/pacientes/PacienteLista';
-import AgregarPaciente from '../../components/pacientes/AgregarPaciente';
+import FormularioPaciente from '../../components/pacientes/FormularioPaciente';
 
-const Pacientes = () => {
+const AgregarPacientes = () => {
     return (
         <div className='container mt-5'>
             <div className='jumbotron mt-5'>
-                <AgregarPaciente />
+                <FormularioPaciente />
                 <PacienteLista />
             </div>
         </div>
     );
 }
 
-export default Pacientes;
+export default AgregarPacientes;

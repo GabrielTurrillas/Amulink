@@ -15,7 +15,7 @@ const PacienteLista = () => {
     
     if (!pacientes || !pacientes.length) {
         return (
-            <p>NO HAY PACIENTES</p>
+            <p>Spiner</p>
         ) 
     }
     return (

@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPerfil } from '../../redux/actions/terapeutaActions';
 
-const DetallePerfil = () => {
+const FichaPerfil = () => {
     const perfil = useSelector(state => state.terapeutaReducer.perfil);
     const dispatch = useDispatch();
 
@@ -56,4 +56,4 @@ const DetallePerfil = () => {
     );
 };
 
-export default DetallePerfil;
+export default FichaPerfil;

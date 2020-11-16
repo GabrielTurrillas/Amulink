@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { fetchSesiones } from '../../redux/actions/terapiaActions';
-
+/* Containers:
+    PacienteDashBoard.js
+*/
 const SesionLista = () => {
     const dispatch = useDispatch();
     const { id:idPaciente } = useParams();
