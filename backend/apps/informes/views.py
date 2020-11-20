@@ -11,7 +11,7 @@ from ..paciente.models import Paciente
 pagina resumen mensual (sitio terapeuta)
     numero de horas atendidas por mes(preguntar si 1 sesion=1hora)*
     pagos pendientes amulen(historico)(modalidad)
-    cantidad de pacientes totales
+    cantidad de pacientes totales*
 """
 
 @api_view(['GET',])
@@ -32,23 +32,20 @@ def pagosPendientes(request):
 
 
 @api_view(['GET',])
-def numeroPacientesView(request, pk):
+def numeroPacientesView(request):
     """ cantidad de pacientes totales """
     if request.method == 'GET':
-        numeroPacientes = Paciente.objects.filter(userAccount=request.user)
+        numeroPacientes = Paciente.objects.filter(userAccount=request.user).count()
         return Response(numeroPacientes)
 
 
 
-"""
- area comercial
-"""
 
 """ 
 area comercial (admin)
-    registro de ventas mensuales
-    cantidad de pacientes atendidos por mes
-    registro de ventas mensuales de cada terapeuta por tipo de terapia
+    registro de ventas mensuales => (cantidad de sesiones mensuales totales)(preguntar)
+    cantidad de pacientes atendidos por mes (pacientes activos totales)
+    registro de ventas mensuales de cada terapeuta por tipo de terapia (cantidad de sesiones por terapeuta mensuales)
 """
 
 """

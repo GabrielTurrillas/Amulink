@@ -3,8 +3,6 @@ import {
     FETCH_PERFIL_FAILURE,
     PUT_PERFIL_SUCCESS,
     PUT_PERFIL_FAILURE,
-    FETCH_CONTAR_SESIONES_MES_SUCCESS,
-    FETCH_CONTAR_SESIONES_MES_FAILURE
 } from '../actions/types';
 
 const initialState = {
@@ -47,17 +45,6 @@ const terapeutaReducer = (state=initialState, action) => {
                 ...state,
                 errors: action.payload,
             };
-        case FETCH_CONTAR_SESIONES_MES_SUCCESS:
-            return {
-                ...state,
-                sesionesMes: action.payload,
-                errors: '',
-            }
-        case FETCH_CONTAR_SESIONES_MES_FAILURE:
-            return {
-                ...state,
-                errors: action
-            }
         default:
             return state
     };

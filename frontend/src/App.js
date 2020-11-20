@@ -18,7 +18,7 @@ import FichaSesion from './containers/pacientes/FichaSesion';
 import Perfil from './containers/terapeuta/Perfil';
 import Layout from './hocs/Layout';
 import ModificarPerfil from './containers/terapeuta/ModificarPerfil';
-import ResumenMensual from './containers/terapeuta/ResumenMensual';
+import ResumenMensual from './containers/informes/ResumenMensual';
 
 const App = () => (
     <Provider store={store}>

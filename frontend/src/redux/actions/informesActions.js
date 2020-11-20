@@ -1,12 +1,12 @@
 import axios from '../../axios';
 import {
-    FETCH_PERFIL_SUCCESS,
-    FETCH_PERFIL_FAILURE,
-    PUT_PERFIL_SUCCESS,
-    PUT_PERFIL_FAILURE,
+    FETCH_NUMERO_HORAS_MES_SUCCESS,
+    FETCH_NUMERO_HORAS_MES_FAILURE,
+    FETCH_NUMERO_PACIENTES_SUCCESS,
+    FETCH_NUMERO_PACIENTES_FAILURE,
 } from './types';
 
-export const fetchPerfil = () => async dispatch => {
+export const fetchNumeroHorasMes = () => async dispatch => {
     const config = {
         headers:{
             'Content-Type': 'application/json',
@@ -14,23 +14,22 @@ export const fetchPerfil = () => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.get('/api/terapeuta/perfil', config)
+    axios.get('api/informes/numeroHorasMes', config)
     .then(res => {
         dispatch({
-            type: FETCH_PERFIL_SUCCESS,
+            type: FETCH_NUMERO_HORAS_MES_SUCCESS,
             payload: res.data
-        });
+        })
     })
     .catch(err => {
         dispatch({
-            type: FETCH_PERFIL_FAILURE,
+            type: FETCH_NUMERO_HORAS_MES_FAILURE,
             payload: err.data
         });
-        console.log(err);
     });
 };
 
-export const putPerfil = (body) => async dispatch => {
+export const fetchNumeroPacientes = () => async dispatch => {
     const config = {
         headers:{
             'Content-Type': 'application/json',
@@ -38,17 +37,17 @@ export const putPerfil = (body) => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.put("/api/terapeuta/modificar_perfil", body, config)
+    axios.get('api/informes/numeroPacientes', config)
     .then(res => {
         dispatch({
-            type: PUT_PERFIL_SUCCESS,
+            type: FETCH_NUMERO_PACIENTES_SUCCESS,
             payload: res.data
-        });
+        })
     })
     .catch(err => {
         dispatch({
-            type: PUT_PERFIL_FAILURE,
+            type: FETCH_NUMERO_PACIENTES_FAILURE,
             payload: err.data
         });
     });
-};
+}

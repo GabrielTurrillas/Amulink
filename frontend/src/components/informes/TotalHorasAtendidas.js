@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchContarSesionesMes } from '../../redux/actions/terapeutaActions';
+import { fetchNumeroHorasMes } from '../../redux/actions/informesActions';
 
 const TotalHorasAtendidas = () => {
-    const sesionesMes = useSelector(state => state.terapeutaReducer.sesionesMes)
+    const sesionesMes = useSelector(state => state.informesReducer.numeroHorasMes)
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(fetchContarSesionesMes())
+        dispatch(fetchNumeroHorasMes())
     }, [dispatch]);
     return (
         <Fragment>
