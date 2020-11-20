@@ -7,6 +7,7 @@ urlpatterns = [
     path('api/paciente/', include('apps.paciente.urls')),
     path('api/terapia/', include('apps.terapia.urls')),
     path('api/terapeuta/', include('apps.terapeuta.urls')),
+    path('api/informe/', include('apps.informes.urls')),
     path('admin/', admin.site.urls),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
