@@ -3,7 +3,9 @@ import {
     FETCH_PERFIL_SUCCESS,
     FETCH_PERFIL_FAILURE,
     PUT_PERFIL_SUCCESS,
-    PUT_PERFIL_FAILURE
+    PUT_PERFIL_FAILURE,
+    FETCH_CONTAR_SESIONES_MES_SUCCESS,
+    FETCH_CONTAR_SESIONES_MES_FAILURE
 } from './types';
 
 export const fetchPerfil = () => async dispatch => {
@@ -48,6 +50,29 @@ export const putPerfil = (body) => async dispatch => {
     .catch(err => {
         dispatch({
             type: PUT_PERFIL_FAILURE,
+            payload: err.data
+        });
+    });
+};
+
+export const fetchContarSesionesMes = () => async dispatch => {
+    const config = {
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': `JWT ${localStorage.getItem('access')}`,
+            'Accept': 'application/json'
+        }
+    };
+    axios.get("/api/terapia/sesion/contar_sesiones_mes", config)
+    .then(res => {
+        dispatch({
+            type: FETCH_CONTAR_SESIONES_MES_SUCCESS,
+            payload: res.data
+        })
+    })
+    .catch(err => {
+        dispatch({
+            type: FETCH_CONTAR_SESIONES_MES_FAILURE,
             payload: err.data
         });
     });

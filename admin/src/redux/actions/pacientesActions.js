@@ -18,7 +18,7 @@ export const fetchPacientes = () => async dispatch => {
         }
     };
 
-    axios.get("/api/paciente/", config)
+    axios.get("/api/paciente/admin/list", config)
     .then(res => {
         dispatch({
             type: FETCH_PACIENTES_SUCCESS,
@@ -42,7 +42,7 @@ export const fetchPacienteDetalle = (idPaciente) => async dispatch => {
         }
     };
     console.log('idPaciente:', idPaciente)
-    axios.get(`/api/paciente/${idPaciente}`, config)
+    axios.get('/api/paciente/admin/'+idPaciente, config)
     .then(res => {
         dispatch({
             type: FETCH_PACIENTE_DETALLE_SUCCESS,
@@ -57,7 +57,7 @@ export const fetchPacienteDetalle = (idPaciente) => async dispatch => {
     });
 };
 
-export const agregarPacientes = (user, startDate ,{ rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion }) => async dispatch => {
+export const postPacientes = (startDate ,{ rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion, tipoTerapia }) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -66,9 +66,11 @@ export const agregarPacientes = (user, startDate ,{ rut, nombre, apellidoPaterno
         }
     };
     const fechaNacimiento = startDate
-    const { id:userAccount } = user
-    const body = JSON.stringify({ rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, fechaNacimiento, genero, direccion, comunaResidencia, ocupacionProfecion, userAccount});
-    axios.post('/api/paciente/', body, config)
+    const body = JSON.stringify({ rut, nombre, apellidoPaterno,
+        apellidoMaterno, telefono, email, fechaNacimiento,
+        genero, direccion, comunaResidencia, ocupacionProfecion,
+        tipoTerapia });
+    axios.post('/api/paciente/admin/create', body, config)
     .then(res =>{
         dispatch({
             type: ADD_PACIENTE_SUCCESS,

@@ -1,13 +1,17 @@
 import React, { Fragment } from 'react';
-import FichaPaciente from '../../containers/pacientes/FichaPaciente';
+import PacienteDetalle from './PacienteDetalle';
+import FormularioTerapia from '../terapia/FormularioTerapia';
 /* Containers:
     Derivacion.js
  */
 const DerivacionPacientes = () => {
     return (
         <Fragment>
-            <h5>Componente DerivacionPacientes</h5>
-            <FichaPaciente />
+            <h5>Paciente</h5>
+            <PacienteDetalle />
+            <div className='mt-4'></div>
+            <h5>Informacion de Terapia</h5>
+            <FormularioTerapia />
         </Fragment>
     );
 }

@@ -1,4 +1,5 @@
 import datetime
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404, HttpResponse
 from rest_framework import status
 from rest_framework.views import APIView
@@ -11,26 +12,32 @@ from .serializers import TerapiaSerializer, SesionSerializer
 from .models import Terapia, Sesion
 
 
-
-class TerapiaDetailView(APIView):
-    def get_object(self, pk):
-        try:
-            return Paciente.objects.get(pk=pk)
-        except Paciente.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        paciente = self.get_object(pk)
-        terapia = Terapia.objects.get(userAccount=request.user, paciente=paciente)
-        terapiaSerializer = TerapiaSerializer(terapia)
-        return Response(terapiaSerializer.data)
+@api_view(['GET',])
+def terapiaDetailView(request, pk):
+    try:
+        terapia = Terapia.objects.get(paciente=pk)
+    except ObjectDoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
     
+    if request.method == 'GET':
+        serializer = TerapiaSerializer(terapia)
+        return Response(serializer.data)
+
+        
+
+@api_view(['POST',])
+def createTerapiaView(request):
+    if request.method == 'POST':
+        serializer = TerapiaSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
 @api_view(['GET','POST'])
 def SesionListView(request, pk):
-
     if request.method == 'GET':
         sesiones = Sesion.objects.filter(terapia__paciente__id=pk, terapia__userAccount=request.user)
         serializer = SesionSerializer(sesiones, many=True)
@@ -46,7 +53,6 @@ def SesionListView(request, pk):
 
 @api_view(['GET','PUT'])
 def SesionDetalle(request, pk):
-
     if request.method == 'GET':
         sesion = Sesion.objects.get(id=pk)
         serializer = SesionSerializer(sesion)
@@ -62,7 +68,6 @@ def sesionCurrentMonthCountView(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == "GET":
-        serializer = SesionSerializer(sesionCurrentMonthCount, many=True)
         return Response(sesionCurrentMonthCount)
 
 

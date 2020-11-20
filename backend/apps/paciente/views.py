@@ -2,6 +2,8 @@ from rest_framework.generics import ListCreateAPIView, ListAPIView, RetrieveUpda
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework import status
 
 from ..accounts.models import UserAccount
 from ..terapia.models import Terapia
@@ -15,6 +17,29 @@ class PacienteListCreateView(ListCreateAPIView):
     pagination_class = None
     queryset = Paciente.objects.all()
     permission_classes = [IsAdminUser]
+
+@api_view(['POST', ])
+@permission_classes([IsAdminUser])
+def pacienteCreateView(request):
+    if request.method == 'POST':
+        serializer = PacienteSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', ])
+@permission_classes([IsAdminUser])
+def pacienteListView(request):
+    try:
+        pacientes = Paciente.objects.all()
+    except pacientes.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = PacienteSerializer(pacientes, many=True)
+        return Response(serializer.data)
 
 
 class PacienteView(RetrieveUpdateDestroyAPIView):

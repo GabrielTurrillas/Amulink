@@ -1,21 +1,16 @@
 import React, { Fragment, useEffect } from 'react';
-import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchContarSesionesMes } from '../../redux/actions/terapeutaActions';
 
 const TotalHorasAtendidas = () => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `JWT ${localStorage.getItem('access')}`,
-            'Accept': 'application/json'
-        }
-    };
+    const sesionesMes = useSelector(state => state.terapeutaReducer.sesionesMes)
+    const dispatch = useDispatch();
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/api/sesion/contar_sesiones_mes`, config)
-        .then(res => console.log('response',res.data))
-    });
+        dispatch(fetchContarSesionesMes())
+    }, [dispatch]);
     return (
         <Fragment>
-            
+            <p>Sesiones del mes: {sesionesMes}</p>
         </Fragment>
     );
 }

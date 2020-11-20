@@ -7,7 +7,9 @@ import {
     FETCH_TERAPIA_SUCCESS,
     FETCH_TERAPIA_FAILURE,
     FETCH_SESION_SUCCESS,
-    FETCH_SESION_FAILURE
+    FETCH_SESION_FAILURE,
+    POST_TERAPIA_SUCCESS,
+    POST_TERAPIA_FAILURE
 } from './types';
 
 
@@ -80,6 +82,29 @@ export const fetchTerapia = (idPaciente) => async dispatch => {
             payload: err.data
         })
         console.log(err)
+    });
+};
+
+export const postTerapia = (body) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `JWT ${localStorage.getItem('access')}`,
+            'Accept': 'application/json'
+        }
+    };
+    axios.post("/api/terapia/admin/create", body, config)
+    .then(res => {
+        dispatch({
+            type: POST_TERAPIA_SUCCESS,
+            payload: res.data
+        });
+    })
+    .catch(err => {
+        dispatch({
+            type: POST_TERAPIA_FAILURE,
+            payload: err.data
+        });
     });
 };
 

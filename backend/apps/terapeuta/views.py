@@ -21,9 +21,26 @@ def getPerfilTerapeutaView(request):
     except perfilTerapeuta.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-    if request.method == "GET":
+    if request.method == 'GET':
         serializer = PerfilTerapeutaSerializer(perfilTerapeuta)
         return Response(serializer.data)
+
+
+@api_view(['GET', ])
+@permission_classes([IsAdminUser])
+def getPerfilTerapeutaListView(request):
+    try:
+        perfiles = PerfilTerapeuta.objects.all()
+    except perfiles.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        serializer = PerfilTerapeutaSerializer(perfiles, many=True)
+        return Response(serializer.data)
+
+    
+    
+
 
 
 @api_view(['PUT', ])
@@ -41,6 +58,8 @@ def putPerfilTerapeutaView(request):
             data["success"]= "update successful"
             return Response(data=data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 
 
 

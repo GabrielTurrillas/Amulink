@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Terapia, Sesion
 
 class TerapiaAdmin(admin.ModelAdmin):
-    list_display = ('id', 'paciente', 'userAccount', 'tipoTerapia', 'fechaInicio', 'motivoConsulta', 'tipoTerapia', 'captacion', 'isActive')
+    list_display = ('id', 'paciente', 'userAccount', 'fechaInicio', 'motivoConsulta', 'captacion')
     list_per_page = 25
 
 class SesionAdmin(admin.ModelAdmin):

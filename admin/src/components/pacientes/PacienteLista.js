@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPacientes } from '../../redux/actions/pacientes';
+import { fetchPacientes } from '../../redux/actions/pacientesActions';
 import { Link } from 'react-router-dom';
 /* Containers:
     AgregarPacientes.js
@@ -21,7 +21,7 @@ const PacienteLista = () => {
     }
     return (
         <Fragment>
-            <div className='card mt-4 ml-4 mr-4'>
+            <div className='card mt-4'>
                 <table className="table table-hover">
                     <thead>
                         <tr>

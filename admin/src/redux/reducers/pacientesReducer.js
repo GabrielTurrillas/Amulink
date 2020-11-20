@@ -9,7 +9,21 @@ import {
 
 
 const initialState = {
-    pacientes: [],
+    pacientes: {
+        rut:'',
+        nombre:'',
+        apellidoPaterno:'',
+        apellidoMaterno:'',
+        telefono:'',
+        email:'',
+        fechaNacimiento:'',
+        genero:'',
+        direccion:'',
+        comunaResidencia:'',
+        ocupacionProfecion:'',
+        tipoTerapia:'',
+        userAccount:''
+    },
     pacienteDetalle: {},
     errors: '',
 };
@@ -31,7 +45,7 @@ const pacientesReducer = (state=initialState, action) => {
         case ADD_PACIENTE_SUCCESS:
             return {
                 ...state,
-                pacientes: [...state.pacientes, action.payload],
+                pacientes: [action.payload, ...state.pacientes],
                 errors:''
             }
         case ADD_PACIENTE_FAILURE:

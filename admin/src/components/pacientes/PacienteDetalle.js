@@ -1,7 +1,7 @@
 import React,{ Fragment, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPacienteDetalle } from '../../redux/actions/pacientes';
+import { fetchPacienteDetalle } from '../../redux/actions/pacientesActions';
 import { fetchTerapia } from '../../redux/actions/terapiaActions';
 /* Containers:
     FichaPaciente.js
@@ -23,67 +23,69 @@ const PacienteDetalle = () => {
     },[dispatch, idPaciente]);
 
     
-    const { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, fechaNacimiento, genero, direccion, comunaResidencia, ocupacionProfecion } = paciente
+    const { rut, nombre, apellidoPaterno, apellidoMaterno,
+        telefono, email, fechaNacimiento, genero, direccion,
+        comunaResidencia, ocupacionProfecion, tipoTerapia } = paciente
     const fechaNacimientoDate = new Date(fechaNacimiento);
 
     return (
         <Fragment>
-            <div className='row ml-3 mt-3'>
-                    <div className='col'>
-                        <p className='font-weight-light'>Rut: { rut }</p>
-                    </div>
-                    <div className='col'>
-                        <p className='font-weight-light'>Nombre: { nombre }</p>
-                    </div>
+            <div className='row mt-3'>
+                <div className='col'>
+                    <p className='font-weight-light'>Rut: { rut }</p>
                 </div>
-                <div className='row ml-3 mt-3'>
-                    <div className='col'>
-                        <p className='font-weight-light'>Apellido paterno: { apellidoPaterno }</p>
-                    </div>
-                    <div className='col'>
-                        <p className='font-weight-light'>Apelldio materno: { apellidoMaterno }</p>
-                    </div>
+                <div className='col'>
+                    <p className='font-weight-light'>Nombre: { nombre }</p>
                 </div>
-                <div className='row ml-3 mt-3'>
-                    <div className='col'>
-                        <p className='font-weight-light'>Telefono: { telefono }</p>
-                    </div>
-                    <div className='col'>
-                        <p className='font-weight-light'>Email: { email }</p>
-                    </div>
+            </div>
+            <div className='row mt-3'>
+                <div className='col'>
+                    <p className='font-weight-light'>Apellido paterno: { apellidoPaterno }</p>
                 </div>
-                <div className='row ml-3 mt-3'>
-                    <div className='col'>
-                        <p className='font-weight-light'>Genero: { genero }</p>
-                    </div>
-                    <div className='col'>
-                        <p className='font-weight-light'>Direccion: { direccion }</p>
-                    </div>
+                <div className='col'>
+                    <p className='font-weight-light'>Apelldio materno: { apellidoMaterno }</p>
                 </div>
-                <div className='row ml-3 mt-3'>
-                    <div className='col'>
-                        <p className='font-weight-light'>Comuna de Residencia: { comunaResidencia }</p>
-                    </div>
-                    <div className='col'>
-                        <p className='font-weight-light'>Fecha de Nacimiento: { fechaNacimientoDate.getDay() }/{ fechaNacimientoDate.getMonth() }/{ fechaNacimientoDate.getFullYear() }</p>
-                    </div>
+            </div>
+            <div className='row mt-3'>
+                <div className='col'>
+                    <p className='font-weight-light'>Telefono: { telefono }</p>
                 </div>
-                <div className='row ml-3 mt-3'>
-                    <div className='col'>
-                        <p className='font-weight-light'>Ocupacion o Profecion: { ocupacionProfecion }</p>
-                    </div>
-                    <div className='col'>
-                        <p className='font-weight-light'>Tipo de Terapia: { terapia.tipoTerapia }</p>
-                    </div>
+                <div className='col'>
+                    <p className='font-weight-light'>Email: { email }</p>
                 </div>
-                <div className='row ml-3 mt-3'>
-                    <div className='col'>
-                        <p className='font-weight-light'>Motivo de Consulta: { terapia.motivoConsulta }</p>
-                    </div>
-                    <div className='col'>
-                        <p className='font-weight-light'>Captacion: { terapia.captacion }</p>
-                    </div>
+            </div>
+            <div className='row mt-3'>
+                <div className='col'>
+                    <p className='font-weight-light'>Genero: { genero }</p>
                 </div>
+                <div className='col'>
+                    <p className='font-weight-light'>Direccion: { direccion }</p>
+                </div>
+            </div>
+            <div className='row mt-3'>
+                <div className='col'>
+                    <p className='font-weight-light'>Comuna de Residencia: { comunaResidencia }</p>
+                </div>
+                <div className='col'>
+                    <p className='font-weight-light'>Fecha de Nacimiento: { fechaNacimientoDate.getDay() }/{ fechaNacimientoDate.getMonth() }/{ fechaNacimientoDate.getFullYear() }</p>
+                </div>
+            </div>
+            <div className='row mt-3'>
+                <div className='col'>
+                    <p className='font-weight-light'>Ocupacion o Profecion: { ocupacionProfecion }</p>
+                </div>
+                <div className='col'>
+                    <p className='font-weight-light'>Tipo de Terapia: { tipoTerapia }</p>
+                </div>
+            </div>
+            <div className='row mt-3'>
+                <div className='col'>
+                    <p className='font-weight-light'>Motivo de Consulta: { terapia.motivoConsulta }</p>
+                </div>
+                <div className='col'>
+                    <p className='font-weight-light'>Captacion: { terapia.captacion }</p>
+                </div>
+            </div>
         </Fragment>
     );
 }
