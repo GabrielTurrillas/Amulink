@@ -1,9 +1,11 @@
 import datetime
+from calendar import monthrange
 from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAdminUser
 from ..terapia.models import Sesion
 from ..paciente.models import Paciente
 
@@ -26,9 +28,11 @@ def numeroHorasMesView(request):
         return Response(sesionCurrentMonthCount)
 
 
+
 @api_view(['GET',])
 def pagosPendientes(request):
     """ pagos pendientes amulen(historico)(modalidad)(falta info) """
+
 
 
 @api_view(['GET',])
@@ -39,14 +43,29 @@ def numeroPacientesView(request):
         return Response(numeroPacientes)
 
 
-
-
 """ 
 area comercial (admin)
-    registro de ventas mensuales => (cantidad de sesiones mensuales totales)(preguntar)
+    registro de ventas mensuales => (numero de sesiones mensuales totales)(preguntar)*
     cantidad de pacientes atendidos por mes (pacientes activos totales)
     registro de ventas mensuales de cada terapeuta por tipo de terapia (cantidad de sesiones por terapeuta mensuales)
 """
+
+@api_view(['GET',])
+@permission_classes([IsAdminUser])
+def numeroSesionesMensualesView(request, mes, año):
+    """ numero de sesiones mensuales totales """
+    ultimoDiaMes = monthrange(año, mes)[1]
+    if request.method == 'GET':
+        numeroSesionesMensuales = Sesion.objects.filter(fechaSesion__gte=datetime.date(año,mes,1),
+                                                        fechaSesion__lte=datetime.date(año,mes,ultimoDiaMes)).count()
+        return Response(numeroSesionesMensuales)
+
+""" samples = Sample.objects.filter(sampledate__gte=datetime.date(2011, 1, 1),
+                                sampledate__lte=datetime.date(2011, 1, 31)) """
+
+
+
+
 
 """
 finansas (admin)

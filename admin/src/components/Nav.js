@@ -21,6 +21,9 @@ const Nav = ({ logout, isAuthenticated }) => {
                 <Link className='nav-link' to='/pacientes'>Pacientes</Link>
             </li>
             <li className='nav-item'>
+                <Link className='nav-link' to='/informes/area_comercial'>Area Comercial</Link>
+            </li>
+            <li className='nav-item'>
                 <a className='nav-link' href='/' onClick={logout}>Logout</a>
             </li>
         </Fragment>
