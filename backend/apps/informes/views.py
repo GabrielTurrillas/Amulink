@@ -68,8 +68,9 @@ def numeroSesionesMensualesView(request, mes, año):
 @permission_classes([IsAdminUser])
 def numeroPacientesActivosView(request):
     numeroPacientesActivos = Paciente.objects.filter(isActive=True).count()
+    print(numeroPacientesActivos)
     if request.method == 'GET':
-        Response(numeroPacientesActivos)
+        return Response(numeroPacientesActivos)
 
         
 

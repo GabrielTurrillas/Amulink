@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.generic import TemplateView
 
-
 urlpatterns = [
     path('api/paciente/', include('apps.paciente.urls')),
     path('api/terapia/', include('apps.terapia.urls')),
