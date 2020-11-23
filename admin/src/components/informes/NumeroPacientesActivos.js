@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {  } from '../../redux/actions/informesActions';
+import { fetchNumeroPacientesActivos } from '../../redux/actions/informesActions';
 
 const NumeroPacientesActivos = () => {
     const numeroPacientesActivos = useSelector(state => state.informesReducer.numeroPacientesActivos)
