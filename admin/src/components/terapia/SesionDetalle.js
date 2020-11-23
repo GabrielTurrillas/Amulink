@@ -35,7 +35,7 @@ const SesionDetalle = () => {
         <Fragment>
             <div className='row ml-3 mt-3'>
                 <div className='col'>
-                    <p className='font-weight-light'>Fecha de la Sesion: {fechaSesionDate.getDay()}/{fechaSesionDate.getMonth()}/{fechaSesionDate.getFullYear()}</p>
+                    <p className='font-weight-light'>Fecha de la Sesion: {fechaSesionDate.getDate()}/{fechaSesionDate.getMonth()+1}/{fechaSesionDate.getFullYear()}</p>
                 </div>
                 <div className='col'>
                     <p className='font-weight-light'>Modalidad: {modalidad}</p>
@@ -46,7 +46,7 @@ const SesionDetalle = () => {
                     <p className='font-weight-light'>Notas de la Sesion: {notasSesion}</p>
                 </div>
                 <div className='col'>
-                    <p className='font-weight-light'>Fecha de Pago: {fechaPagoDate.getDay()}/{fechaPagoDate.getMonth()}/{fechaPagoDate.getFullYear()}</p>
+                    <p className='font-weight-light'>Fecha de Pago: {fechaPagoDate.getDate()}/{fechaPagoDate.getMonth()+1}/{fechaPagoDate.getFullYear()}</p>
                 </div>
             </div>
             <div className='row ml-3 mt-3'>

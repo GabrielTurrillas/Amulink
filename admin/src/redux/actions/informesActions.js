@@ -4,7 +4,7 @@ import {
     FETCH_NUMERO_SESIONES_MES_FAILURE,
 } from './types';
 
-export const fetchNumeroSesionesMensuales = () => async dispatch => {
+export const fetchNumeroSesionesMensuales = (mes,anio) => async dispatch => {
     const config = {
         headers:{
             'Content-Type': 'application/json',
@@ -12,7 +12,7 @@ export const fetchNumeroSesionesMensuales = () => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.get('api/informes/numeroSesionesMensuales', config)
+    axios.get(`api/informes/numeroSesionesMensuales/${mes}/${anio}`, config)
     .then(res => {
         dispatch({
             type: FETCH_NUMERO_SESIONES_MES_SUCCESS,

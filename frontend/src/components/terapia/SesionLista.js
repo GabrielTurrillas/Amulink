@@ -49,7 +49,7 @@ const SesionLista = () => {
                                 return(
                                     <tr key={id} className='clickable-row'>
                                         <th scope="row">{id}</th>
-                                        <td><Link to={"/pacientes/ficha_sesion/"+id}>{fechaSesionDate.getDay()}/{fechaSesionDate.getMonth()}/{fechaSesionDate.getFullYear()}</Link></td>
+                                        <td><Link to={"/pacientes/ficha_sesion/"+id}>{fechaSesionDate.getDate()}/{fechaSesionDate.getMonth()+1}/{fechaSesionDate.getFullYear()}</Link></td>
                                         <td><Link to={"/pacientes/ficha_sesion/"+id}>{asistioString}</Link></td>
                                         <td><Link to={"/pacientes/ficha_sesion/"+id}>{pagoString}</Link></td>
                                     </tr>

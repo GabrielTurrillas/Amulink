@@ -86,7 +86,7 @@ const FormularioTerapia = () => {
                         </div>
                     </div>
                 </div>
-            <button className='mt-2 btn btn-success' type='submit'>Derivar</button>
+                <button className='mt-2 btn btn-success' type='submit'>Derivar</button>
             </form>
         </Fragment>
     );

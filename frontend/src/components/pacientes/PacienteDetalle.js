@@ -63,7 +63,7 @@ const PacienteDetalle = () => {
                         <p className='font-weight-light'>Comuna de Residencia: { comunaResidencia }</p>
                     </div>
                     <div className='col'>
-                        <p className='font-weight-light'>Fecha de Nacimiento: { fechaNacimientoDate.getDay() }/{ fechaNacimientoDate.getMonth() }/{ fechaNacimientoDate.getFullYear() }</p>
+                        <p className='font-weight-light'>Fecha de Nacimiento: { fechaNacimientoDate.getDate() }/{ fechaNacimientoDate.getMonth()+1 }/{ fechaNacimientoDate.getFullYear() }</p>
                     </div>
                 </div>
                 <div className='row ml-3 mt-3'>
