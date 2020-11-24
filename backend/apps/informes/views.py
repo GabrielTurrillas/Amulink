@@ -79,7 +79,7 @@ def numeroPacientesActivosView(request):
 
 @api_view(['GET',])
 @permission_classes([IsAdminUser])
-def numeroSesionesTerapeutaMesView(request, mes, año, terapeuta):
+def numeroSesionesTerapeutaMesView(request, terapeuta, mes, año):
     """ numero de sesiones mensuales totales """
     ultimoDiaMes = monthrange(año, mes)[1]
     if request.method == 'GET':

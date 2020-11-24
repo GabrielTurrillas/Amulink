@@ -12,7 +12,6 @@ const NumeroSesionesMensuales = () => {
     const onSubmit = (data) => {
         const { mes, anio } = data
         dispatch(fetchNumeroSesionesMensuales(mes,anio))
-        console.log(numeroSesionesMes)
     };
     return (
         <Fragment>
