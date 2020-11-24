@@ -47,7 +47,7 @@ def numeroPacientesView(request):
 area comercial (admin)
     registro de ventas mensuales => (numero de sesiones mensuales totales)(preguntar)*
     cantidad de pacientes activos*
-    registro de ventas mensuales de cada terapeuta por tipo de terapia (cantidad de sesiones por terapeuta mensuales)
+    registro de ventas mensuales de cada terapeuta por tipo de terapia (cantidad de sesiones por terapeuta mensuales)*
 """
 
 @api_view(['GET',])
@@ -90,11 +90,10 @@ def numeroSesionesTerapeutaMesView(request, terapeuta, mes, año):
 
 
 
-
 """
-finansas (admin)
+finansas (admin) (como se realizan los pagos?)(como se debe calcular el pago? ¿por mes?)
     pagos de equipo interno a centro
-    pagos de equipo externo a centro
+    pagos de equipo externo a centro 
     pago de derivaciones equipo interno
     pago de derivaciones equipo externo
     pago sesiones practicantes
@@ -103,7 +102,7 @@ finansas (admin)
 
 """
 area de operaciones
-    registro de cupos por terapeuta
+    registro de cupos por terapeuta(semanales o mensuales)
     panel de derivacion
     pago y confirmacion de pago (terapeuta y administrador)
     frecuencia sesion 

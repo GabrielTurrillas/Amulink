@@ -13,7 +13,13 @@ const Layout = (props) => {
     return(
         <div>
             <Nav />
-            {props.children}
+            <div className='container mt-5'>
+                <div className='jumbotron mt-5'>
+                    <div className='ml-4 mr-4'>
+                        {props.children}
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
