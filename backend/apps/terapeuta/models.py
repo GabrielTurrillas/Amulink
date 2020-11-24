@@ -5,6 +5,12 @@ from django.dispatch import receiver
 from ..accounts.models import UserAccount
 
 class PerfilTerapeuta(models.Model):
+    tipoCuenta_choise = (
+        ('equipoInterno','equipoInterno'),
+        ('equipoExterno','equipoExterno'),
+        ('director','director'),
+        ('pasante','pasante'),
+    )
     userAccount = models.OneToOneField(UserAccount, related_name='perfilTerapeuta' ,on_delete=models.CASCADE)
     rut = models.CharField(max_length=50)
     nombre = models.CharField(max_length=50)
@@ -14,9 +20,12 @@ class PerfilTerapeuta(models.Model):
     email = models.CharField(max_length=100)
     genero = models.CharField(max_length=50)
     fechaNacimiento = models.DateTimeField(null=True, blank=True)
+    tipoCuenta = models.CharField(max_length=15, choices=tipoCuenta_choise)
         
     def __str__(self):
         return self.nombre
+
+    
 
 
 
