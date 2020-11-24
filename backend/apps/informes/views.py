@@ -46,7 +46,7 @@ def numeroPacientesView(request):
 """ 
 area comercial (admin)
     registro de ventas mensuales => (numero de sesiones mensuales totales)(preguntar)*
-    cantidad de pacientes activos
+    cantidad de pacientes activos*
     registro de ventas mensuales de cada terapeuta por tipo de terapia (cantidad de sesiones por terapeuta mensuales)
 """
 
@@ -60,6 +60,8 @@ def numeroSesionesMensualesView(request, mes, año):
                                                         fechaSesion__lte=datetime.date(año,mes,ultimoDiaMes)).count()
         return Response(numeroSesionesMensuales)
 
+
+
 """ samples = Sample.objects.filter(sampledate__gte=datetime.date(2011, 1, 1),
                                 sampledate__lte=datetime.date(2011, 1, 31)) """
 
@@ -67,15 +69,24 @@ def numeroSesionesMensualesView(request, mes, año):
 @api_view(['GET',])
 @permission_classes([IsAdminUser])
 def numeroPacientesActivosView(request):
+    """ cantidad de pacientes activos """
     numeroPacientesActivos = Paciente.objects.filter(isActive=True).count()
     print(numeroPacientesActivos)
     if request.method == 'GET':
         return Response(numeroPacientesActivos)
 
-        
 
-""" cantidad de pacientes activos """
 
+@api_view(['GET',])
+@permission_classes([IsAdminUser])
+def numeroSesionesTerapeutaMesView(request, mes, año, terapeuta):
+    """ numero de sesiones mensuales totales """
+    ultimoDiaMes = monthrange(año, mes)[1]
+    if request.method == 'GET':
+        numeroSesionesTerapeutaMes = Sesion.objects.filter(fechaSesion__gte=datetime.date(año,mes,1),
+                                                        fechaSesion__lte=datetime.date(año,mes,ultimoDiaMes),
+                                                        terapia__userAccount=terapeuta).count()
+        return Response(numeroSesionesTerapeutaMes)
 
 
 
