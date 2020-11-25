@@ -79,14 +79,30 @@ def numeroPacientesActivosView(request):
 
 @api_view(['GET',])
 @permission_classes([IsAdminUser])
-def numeroSesionesTerapeutaMesView(request, terapeuta, mes, año):
-    """ numero de sesiones mensuales totales """
-    ultimoDiaMes = monthrange(año, mes)[1]
+def numeroSesionesAnualesView(request, prevision, año):
+    """ numero de sesiones anuales totales por tipo de terapia """
+    def get_sesiones(año, mes):
+        ultimoDiaMes = monthrange(año, mes)[1]
+        Sesion.objects.filter(fechaSesion__gte=datetime.date(año,mes,1),
+                                fechaSesion__lte=datetime.date(año,mes,ultimoDiaMes),
+                                terapia__paciente__prevision=prevision).count()
+
     if request.method == 'GET':
-        numeroSesionesTerapeutaMes = Sesion.objects.filter(fechaSesion__gte=datetime.date(año,mes,1),
-                                                        fechaSesion__lte=datetime.date(año,mes,ultimoDiaMes),
-                                                        terapia__userAccount=terapeuta).count()
-        return Response(numeroSesionesTerapeutaMes)
+        diccionarioSesiones = { 
+            'enero': get_sesiones(año, 1),
+            'febrero': get_sesiones(año, 2),
+            'marzo': get_sesiones(año, 3),
+            'abril': get_sesiones(año, 4),
+            'mayo': get_sesiones(año, 5),
+            'junio': get_sesiones(año, 6),
+            'julio': get_sesiones(año, 7),
+            'agosto': get_sesiones(año, 8),
+            'septiembre': get_sesiones(año, 9),
+            'octubre': get_sesiones(año, 10),
+            'nobiembre': get_sesiones(año, 11),
+            'diciembre': get_sesiones(año, 12),
+        }
+    return Response(diccionarioSesiones)
 
 
 

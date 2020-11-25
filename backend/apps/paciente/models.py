@@ -2,7 +2,7 @@ from django.db import models
 # Create your models here.
 
 class Paciente(models.Model):
-    tipoTerapia_choise = (
+    prevision_choise = (
         ('Isapre', 'Isapre'),
         ('Fonasa', 'Fonasa'),
         ('Bajo Costo', 'Bajo Costo'),
@@ -18,7 +18,7 @@ class Paciente(models.Model):
     direccion = models.CharField(max_length=100)
     comunaResidencia = models.CharField(max_length=100) #hacerla con opciones
     ocupacionProfecion = models.CharField(max_length=50)
-    tipoTerapia = models.CharField(max_length=30, blank=True, null=True, choices=tipoTerapia_choise)
+    prevision = models.CharField(max_length=30, blank=True, null=True, choices=prevision_choise)
     isActive = models.BooleanField(default=True)
     userAccount = models.ManyToManyField('accounts.UserAccount', through='terapia.Terapia')
 
