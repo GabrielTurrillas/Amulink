@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchNumeroSesionesMensuales } from '../../redux/actions/informesActions';
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
 
 
 const NumeroSesionesMensuales = () => {

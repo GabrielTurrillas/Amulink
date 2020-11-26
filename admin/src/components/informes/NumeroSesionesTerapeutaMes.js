@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchNumeroSesionesTerapeutaMes } from '../../redux/actions/informesActions';
 import { fetchPerfiles } from '../../redux/actions/terapeutaActions';
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
 
 const NumeroSesionesTerapeutaMes = () => {
     const numeroSesionesTerapeutaMes = useSelector(state => state.informesReducer.numeroSesionesTerapeutaMes)
@@ -53,7 +53,7 @@ const NumeroSesionesTerapeutaMes = () => {
                                 required:'Campo "Año" obligatorio',
                             })}
                         />
-                        {errors.anio && <p>{errors.anio.message}</p>}
+                        {errors.año && <p>{errors.año.message}</p>}
                     </div>
                 </div>
                 <div className='row'>

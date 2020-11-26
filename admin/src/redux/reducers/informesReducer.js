@@ -3,14 +3,14 @@ import {
     FETCH_NUMERO_SESIONES_MES_FAILURE,
     FETCH_NUMERO_PACIENTES_ACTIVOS_SUCCESS,
     FETCH_NUMERO_PACIENTES_ACTIVOS_FAILURE,
-    FETCH_NUMERO_SESIONES_TERAPEUTA_MES_SUCCESS,
-    FETCH_NUMERO_SESIONES_TERAPEUTA_MES_FAILURE,
+    FETCH_NUMERO_SESIONES_ANUALES_SUCCESS,
+    FETCH_NUMERO_SESIONES_ANUALES_FAILURE,
 } from '../actions/types';
 
 const initialState = {
     numeroSesionesMes:0,
     numeroPacientesActivos:0,
-    numeroSesionesTerapeutaMes:0,
+    numeroSesionesAnuales:[],
 };
 
 const terapeutaReducer = (state=initialState, action) => {
@@ -37,13 +37,13 @@ const terapeutaReducer = (state=initialState, action) => {
                 ...state,
                 errors: action.payload
             }
-        case FETCH_NUMERO_SESIONES_TERAPEUTA_MES_SUCCESS:
+        case FETCH_NUMERO_SESIONES_ANUALES_SUCCESS:
             return {
                 ...state,
-                numeroSesionesTerapeutaMes: action.payload,
+                numeroSesionesAnuales: [...state.numeroSesionesAnuales, action.payload],
                 errors: '',
             }
-        case FETCH_NUMERO_SESIONES_TERAPEUTA_MES_FAILURE:
+        case FETCH_NUMERO_SESIONES_ANUALES_FAILURE:
             return {
                 ...state,
                 errors: action.payload

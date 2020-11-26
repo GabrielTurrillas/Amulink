@@ -1,15 +1,12 @@
 import React, {Fragment} from 'react';
-import NumeroSesionesMensuales from '../../components/informes/NumeroSesionesMensuales';
-import NumeroPacientesActivos from '../../components/informes/NumeroPacientesActivos';
-import NumeroSesionesTerapeutaMes from '../../components/informes/NumeroSesionesTerapeutaMes';
+import TablaReporteComercial from '../../components/informes/TablaReporteComercial';
+
 
 const AreaComercial = () => {
     return (
         <Fragment>
             <h3 className='display 4'>Informe Area Comercial</h3>
-            <NumeroSesionesMensuales />
-            <NumeroPacientesActivos />
-            <NumeroSesionesTerapeutaMes />
+            <TablaReporteComercial/>
         </Fragment>
     );
 }

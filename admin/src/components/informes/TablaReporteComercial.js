@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchNumeroSesionesAnuales } from '../redux/actions/informesActions';
-import { fetchPerfiles } from '../redux/actions/terapeutaActions';
+import { fetchNumeroSesionesAnuales } from '../../redux/actions/informesActions';
+import { fetchPerfiles } from '../../redux/actions/terapeutaActions';
 import { useForm } from 'react-hook-form';
 
 const TablaReporteComercial = () => {
@@ -169,5 +169,3 @@ const TablaReporteComercial = () => {
 };
 
 export default TablaReporteComercial;
-
-

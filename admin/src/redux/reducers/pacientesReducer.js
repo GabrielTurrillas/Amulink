@@ -21,6 +21,7 @@ const initialState = {
         direccion:'',
         comunaResidencia:'',
         ocupacionProfecion:'',
+        prevision:'',
         tipoTerapia:'',
         userAccount:''
     },

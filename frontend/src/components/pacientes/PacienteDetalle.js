@@ -21,7 +21,7 @@ const PacienteDetalle = () => {
     },[dispatch, idPaciente]);
 
     
-    const { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, fechaNacimiento, genero, direccion, comunaResidencia, ocupacionProfecion } = paciente
+    const { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, fechaNacimiento, genero, direccion, comunaResidencia, ocupacionProfecion, prevision } = paciente
     const fechaNacimientoDate = new Date(fechaNacimiento);
 
     return (
@@ -71,7 +71,7 @@ const PacienteDetalle = () => {
                         <p className='font-weight-light'>Ocupacion o Profecion: { ocupacionProfecion }</p>
                     </div>
                     <div className='col'>
-                        <p className='font-weight-light'>Tipo de Terapia: { terapia.tipoTerapia }</p>
+                        <p className='font-weight-light'>Tipo de Terapia: { prevision }</p>
                     </div>
                 </div>
                 <div className='row ml-3 mt-3'>
