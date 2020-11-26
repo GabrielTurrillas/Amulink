@@ -1,3 +1,4 @@
+from json import dumps
 import datetime
 from calendar import monthrange
 from django.shortcuts import render
@@ -8,6 +9,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser
 from ..terapia.models import Sesion
 from ..paciente.models import Paciente
+from ..terapeuta.models import PerfilTerapeuta
 
 """ 
 pagina resumen mensual (sitio terapeuta)
@@ -79,28 +81,36 @@ def numeroPacientesActivosView(request):
 
 @api_view(['GET',])
 @permission_classes([IsAdminUser])
-def numeroSesionesAnualesView(request, prevision, año):
+def numeroSesionesAnualesView(request, prevision, terapeuta, año):
     """ numero de sesiones anuales totales por tipo de terapia """
-    def get_sesiones(año, mes):
+    instanciaTerapeuta = PerfilTerapeuta.objects.get(pk=terapeuta)
+    nombre = instanciaTerapeuta.nombre
+    apellidoPaterno = instanciaTerapeuta.apellidoPaterno         
+    def get_sesiones(año, mes, prevision, terapeuta):
         ultimoDiaMes = monthrange(año, mes)[1]
-        Sesion.objects.filter(fechaSesion__gte=datetime.date(año,mes,1),
+        sesiones = Sesion.objects.filter(fechaSesion__gte=datetime.date(año,mes,1),
                                 fechaSesion__lte=datetime.date(año,mes,ultimoDiaMes),
-                                terapia__paciente__prevision=prevision).count()
+                                terapia__paciente__prevision=prevision,
+                                terapia__userAccount=terapeuta).count()
+        return sesiones
+
 
     if request.method == 'GET':
-        diccionarioSesiones = { 
-            'enero': get_sesiones(año, 1),
-            'febrero': get_sesiones(año, 2),
-            'marzo': get_sesiones(año, 3),
-            'abril': get_sesiones(año, 4),
-            'mayo': get_sesiones(año, 5),
-            'junio': get_sesiones(año, 6),
-            'julio': get_sesiones(año, 7),
-            'agosto': get_sesiones(año, 8),
-            'septiembre': get_sesiones(año, 9),
-            'octubre': get_sesiones(año, 10),
-            'nobiembre': get_sesiones(año, 11),
-            'diciembre': get_sesiones(año, 12),
+        diccionarioSesiones = {
+            'terapeuta': nombre+' '+apellidoPaterno,
+            'prevision': prevision, 
+            'enero': get_sesiones(año, 1, prevision, terapeuta),
+            'febrero': get_sesiones(año, 2, prevision, terapeuta),
+            'marzo': get_sesiones(año, 3, prevision, terapeuta),
+            'abril': get_sesiones(año, 4, prevision, terapeuta),
+            'mayo': get_sesiones(año, 5, prevision, terapeuta),
+            'junio': get_sesiones(año, 6, prevision, terapeuta),
+            'julio': get_sesiones(año, 7, prevision, terapeuta),
+            'agosto': get_sesiones(año, 8, prevision, terapeuta),
+            'septiembre': get_sesiones(año, 9, prevision, terapeuta),
+            'octubre': get_sesiones(año, 10, prevision, terapeuta),
+            'noviembre': get_sesiones(año, 11, prevision, terapeuta),
+            'diciembre': get_sesiones(año, 12, prevision, terapeuta),
         }
     return Response(diccionarioSesiones)
 

@@ -6,5 +6,5 @@ urlpatterns = [
     path('numeroPacientes', numeroPacientesView),
     path('numeroSesionesMensuales/<int:mes>/<int:año>', numeroSesionesMensualesView),
     path('numeroPacientesActivosView', numeroPacientesActivosView),
-    path('numeroSesionesAnualesView/<str:previcion>/<int:año>', numeroSesionesAnualesView)
+    path('numeroSesionesAnualesView/<str:prevision>/<int:terapeuta>/<int:año>', numeroSesionesAnualesView)
 ]

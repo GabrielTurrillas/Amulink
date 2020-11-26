@@ -20,7 +20,7 @@ class PerfilTerapeuta(models.Model):
     email = models.CharField(max_length=100)
     genero = models.CharField(max_length=50)
     fechaNacimiento = models.DateTimeField(null=True, blank=True)
-    tipoCuenta = models.CharField(max_length=15, choices=tipoCuenta_choise)
+    tipoCuenta = models.CharField(max_length=15, choices=tipoCuenta_choise, null=True)
         
     def __str__(self):
         return self.nombre
