@@ -31,7 +31,7 @@ const Nav = ({ logout, isAuthenticated }) => {
 
 
     return (
-        <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+        <nav className='navbar navbar-expand-lg navbar-light bg-light sticky-top'>
             <Link className='navbar-brand' to='/'>Amülink</Link>
             <button 
                 className='navbar-toggler' 

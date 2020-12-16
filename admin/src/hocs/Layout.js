@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Nav from '../components/Nav';
+import Sidebar from '../components/sidebar/Sidebar';
 import { connect } from 'react-redux';
 import { checkAuthenticated, load_user } from '../redux/actions/auth'
 
@@ -13,6 +14,7 @@ const Layout = (props) => {
     return(
         <div>
             <Nav />
+            <Sidebar/>
             <div className='container mt-5'>
                 <div className='jumbotron mt-5'>
                     <div className='ml-4 mr-4'>
