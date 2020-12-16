@@ -9,7 +9,9 @@ import {
     FETCH_SESION_SUCCESS,
     FETCH_SESION_FAILURE,
     POST_TERAPIA_SUCCESS,
-    POST_TERAPIA_FAILURE
+    POST_TERAPIA_FAILURE,
+    PUT_TERAPIA_SUCCESS,
+    PUT_TERAPIA_FAILURE,
 } from './types';
 
 
@@ -93,7 +95,7 @@ export const postTerapia = (body) => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.post("/api/terapia/admin/create", body, config)
+    axios.post("/api/terapia/admin/create_terapia", body, config)
     .then(res => {
         dispatch({
             type: POST_TERAPIA_SUCCESS,
@@ -103,6 +105,29 @@ export const postTerapia = (body) => async dispatch => {
     .catch(err => {
         dispatch({
             type: POST_TERAPIA_FAILURE,
+            payload: err.data
+        });
+    });
+};
+
+export const putTerapia = (id, body) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `JWT ${localStorage.getItem('access')}`,
+            'Accept': 'application/json'
+        }
+    };
+    axios.put(`/api/terapia/admin/put_terapia/${id}`, body, config)
+    .then(res => {
+        dispatch({
+            type: PUT_TERAPIA_SUCCESS,
+            payload: res.data
+        });
+    })
+    .catch(err => {
+        dispatch({
+            type: PUT_TERAPIA_FAILURE,
             payload: err.data
         });
     });

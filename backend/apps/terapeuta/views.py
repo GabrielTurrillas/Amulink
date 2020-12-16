@@ -38,8 +38,6 @@ def getPerfilTerapeutaListView(request):
         serializer = PerfilTerapeutaSerializer(perfiles, many=True)
         return Response(serializer.data)
 
-    
-    
 
 
 
