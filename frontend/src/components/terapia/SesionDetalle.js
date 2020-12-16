@@ -1,7 +1,11 @@
 import React, { Fragment, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSesion } from '../../redux/actions/terapiaActions';
+
+/* Containers
+    FichaSesion.js
+*/
 
 const SesionDetalle = () => {
     const { id:idSesion } = useParams()
@@ -31,7 +35,7 @@ const SesionDetalle = () => {
 
     return (
         <Fragment>
-            <div className='row ml-3 mt-3'>
+            <div className='row mt-3'>
                 <div className='col'>
                     <p className='font-weight-light'>Fecha de la Sesion: {fechaSesionDate.getDate()}/{fechaSesionDate.getMonth()+1}/{fechaSesionDate.getFullYear()}</p>
                 </div>
@@ -39,7 +43,7 @@ const SesionDetalle = () => {
                     <p className='font-weight-light'>Modalidad: {modalidad}</p>
                 </div>
             </div>
-            <div className='row ml-3 mt-3'>
+            <div className='row mt-3'>
                 <div className='col'>
                     <p className='font-weight-light'>Notas de la Sesion: {notasSesion}</p>
                 </div>
@@ -47,7 +51,7 @@ const SesionDetalle = () => {
                     <p className='font-weight-light'>Fecha de Pago: {fechaPagoDate.getDate()}/{fechaPagoDate.getMonth()+1}/{fechaPagoDate.getFullYear()}</p>
                 </div>
             </div>
-            <div className='row ml-3 mt-3'>
+            <div className='row mt-3'>
                 <div className='col'>
                     <p className='font-weight-light'>Pago: {pagoString}</p>
                 </div>
@@ -55,8 +59,10 @@ const SesionDetalle = () => {
                     <p className='font-weight-light'>Asistencia: {asistioString}</p>
                 </div>
             </div>
-            <div className='row ml-3 mt-3'>
-                <button className='mb-3 btn btn-primary mt-4'>Modificar</button>
+            <div className='row mt-3'>
+                <div className='col'>
+                    <Link className='mb-3 mt-4 btn btn-primary' to={`/modificar_sesion/${idSesion}`}>Modificar</Link>
+                </div>
             </div>
         </Fragment>
     );

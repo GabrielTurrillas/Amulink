@@ -1,3 +1,4 @@
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.generics import ListCreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -18,7 +19,25 @@ class PacienteListCreateView(ListCreateAPIView):
     queryset = Paciente.objects.all()
     permission_classes = [IsAdminUser]
 
-@api_view(['POST', ])
+
+@api_view(['PUT',])
+@permission_classes([IsAdminUser])
+def putPacienteView(request,pk):
+    try:
+        instanciaPaciente = Paciente.objects.get(pk=pk)
+    except ObjectDoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'PUT':
+        serializer = PacienteSerializer(instanciaPaciente, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status)
+
+
+
+@api_view(['POST',])
 @permission_classes([IsAdminUser])
 def pacienteCreateView(request):
     if request.method == 'POST':
@@ -30,7 +49,7 @@ def pacienteCreateView(request):
 
 
 
-@api_view(['GET', ])
+@api_view(['GET',])
 @permission_classes([IsAdminUser])
 def pacienteListView(request):
     try:

@@ -85,6 +85,33 @@ export const postPacientes = (startDate ,{ rut, nombre, apellidoPaterno, apellid
     }); 
 };
 
+export const putPaciente = (idPaciente , fechaNacimiento, { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, direccion, comunaResidencia, ocupacionProfecion, prevision }) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `JWT ${localStorage.getItem('access')}`,
+            'Accept': 'application/json'
+        }
+    };
+    const body = JSON.stringify({ rut, nombre, apellidoPaterno,
+        apellidoMaterno, telefono, email, fechaNacimiento,
+        genero, direccion, comunaResidencia, ocupacionProfecion,
+        prevision });
+    axios.put(`api/paciente/admin/putPaciente/${idPaciente}`, body, config)
+    .then(res =>{
+        dispatch({
+            type: ADD_PACIENTE_SUCCESS,
+            payload: res.data
+        })
+    })
+    .catch (err=>{
+        dispatch({
+            type: ADD_PACIENTE_FAILURE,
+            errors: err.data
+        });
+    }); 
+};
+
 
 
 

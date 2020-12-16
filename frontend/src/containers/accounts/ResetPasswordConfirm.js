@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { reset_password_confirm } from '../../redux/actions/auth'
@@ -28,7 +28,7 @@ const ResetPasswordConfirm = (props) => {
     if (requestSent)
         return <Redirect to='/' />;
     return (
-        <div className='container mt-5'>
+        <Fragment>
             <form onSubmit={e => onSubmit(e)}>
                 <div className='form-group'>
                     <input
@@ -56,7 +56,7 @@ const ResetPasswordConfirm = (props) => {
                 </div>
                 <button className='btn btn-primary' type='submit'>Reset Password</button>
             </form>
-        </div>
+        </Fragment>
     );
 };
 

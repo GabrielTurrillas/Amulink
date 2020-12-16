@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPacienteDetalle } from '../../redux/actions/pacientes';
 import { fetchTerapia } from '../../redux/actions/terapiaActions';
 
+/* Containers:
+    FichaPaciente.js
+*/
+
 const PacienteDetalle = () => {
     const { id:idPaciente } = useParams();
     const dispatch = useDispatch();
     const paciente = useSelector(state => state.pacientesReducer.pacienteDetalle)
     const terapia = useSelector(state => state.terapiaReducer.terapia);
-    console.log('paciente:',paciente);
-    console.log('terapia:',terapia);
 
     useEffect(() => {
         dispatch(fetchPacienteDetalle(idPaciente));
@@ -26,7 +28,7 @@ const PacienteDetalle = () => {
 
     return (
         <Fragment>
-            <div className='row ml-3 mt-3'>
+            <div className='row mt-3'>
                     <div className='col'>
                         <p className='font-weight-light'>Rut: { rut }</p>
                     </div>
@@ -34,7 +36,7 @@ const PacienteDetalle = () => {
                         <p className='font-weight-light'>Nombre: { nombre }</p>
                     </div>
                 </div>
-                <div className='row ml-3 mt-3'>
+                <div className='row mt-3'>
                     <div className='col'>
                         <p className='font-weight-light'>Apellido paterno: { apellidoPaterno }</p>
                     </div>
@@ -42,7 +44,7 @@ const PacienteDetalle = () => {
                         <p className='font-weight-light'>Apelldio materno: { apellidoMaterno }</p>
                     </div>
                 </div>
-                <div className='row ml-3 mt-3'>
+                <div className='row mt-3'>
                     <div className='col'>
                         <p className='font-weight-light'>Telefono: { telefono }</p>
                     </div>
@@ -50,7 +52,7 @@ const PacienteDetalle = () => {
                         <p className='font-weight-light'>Email: { email }</p>
                     </div>
                 </div>
-                <div className='row ml-3 mt-3'>
+                <div className='row mt-3'>
                     <div className='col'>
                         <p className='font-weight-light'>Genero: { genero }</p>
                     </div>
@@ -58,7 +60,7 @@ const PacienteDetalle = () => {
                         <p className='font-weight-light'>Direccion: { direccion }</p>
                     </div>
                 </div>
-                <div className='row ml-3 mt-3'>
+                <div className='row mt-3'>
                     <div className='col'>
                         <p className='font-weight-light'>Comuna de Residencia: { comunaResidencia }</p>
                     </div>
@@ -66,7 +68,7 @@ const PacienteDetalle = () => {
                         <p className='font-weight-light'>Fecha de Nacimiento: { fechaNacimientoDate.getDate() }/{ fechaNacimientoDate.getMonth()+1 }/{ fechaNacimientoDate.getFullYear() }</p>
                     </div>
                 </div>
-                <div className='row ml-3 mt-3'>
+                <div className='row mt-3'>
                     <div className='col'>
                         <p className='font-weight-light'>Ocupacion o Profecion: { ocupacionProfecion }</p>
                     </div>
@@ -74,7 +76,7 @@ const PacienteDetalle = () => {
                         <p className='font-weight-light'>Tipo de Terapia: { prevision }</p>
                     </div>
                 </div>
-                <div className='row ml-3 mt-3'>
+                <div className='row mt-3'>
                     <div className='col'>
                         <p className='font-weight-light'>Motivo de Consulta: { terapia.motivoConsulta }</p>
                     </div>

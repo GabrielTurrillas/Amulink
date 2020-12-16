@@ -4,6 +4,11 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { fetchSesiones } from '../../redux/actions/terapiaActions';
 
+/* Containers
+    PacienteDashBoard.js
+    RegistroSesion.js
+*/
+
 const SesionLista = () => {
     const dispatch = useDispatch();
     const { id:idPaciente } = useParams();
@@ -21,7 +26,7 @@ const SesionLista = () => {
 
     return (
        <Fragment>
-            <div className='card ml-4 mr-4 mb-4'>
+            <div className='card mb-4'>
                 <table className="table table-hover">
                     <thead>
                         <tr>

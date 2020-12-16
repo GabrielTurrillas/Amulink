@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { verify } from '../../redux/actions/auth'
@@ -18,7 +18,7 @@ const Activate = ({ verify, match }) => {
         return <Redirect to='/' />;
 
     return (
-        <div className='container'>
+        <Fragment>
             <div 
                 className='d-flex flex-column justify-content-center align-items-center'
                 style={{ marginTop: '200px' }}
@@ -33,7 +33,7 @@ const Activate = ({ verify, match }) => {
                     Verify
                 </button>
             </div>
-        </div>
+        </Fragment>
     );
 };
 

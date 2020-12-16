@@ -6,7 +6,9 @@ import {
     FETCH_TERAPIA_SUCCESS,
     FETCH_TERAPIA_FAILURE,
     FETCH_SESION_SUCCESS,
-    FETCH_SESION_FAILURE
+    FETCH_SESION_FAILURE,
+    PUT_SESION_SUCCESS,
+    PUT_SESION_FAILURE,
 } from '../actions/types';
 
 const initialState = {
@@ -60,6 +62,17 @@ const terapiaReducer = (state=initialState, action) => {
                 errors: '',
             }
         case FETCH_SESION_FAILURE:
+            return {
+                ...state,
+                errors: action.payload,
+            }
+        case PUT_SESION_SUCCESS:
+            return {
+                ...state,
+                sesion:action.payload,
+                errors:'',
+            }
+        case PUT_SESION_FAILURE:
             return {
                 ...state,
                 errors: action.payload,

@@ -12,6 +12,7 @@ import PruebaComponente from './containers/PruebaComponentes';
 import FichaPaciente from './containers/pacientes/FichaPaciente';
 import PacienteDashBoard from './containers/pacientes/PacienteDashBoard';
 import FichaSesion from './containers/pacientes/FichaSesion';
+import ModificarPaciente from './containers/pacientes/ModificarPaciente';
 import AreaComercial from './containers/informes/AreaComercial'
 
 
@@ -27,6 +28,7 @@ const App = () => (
                     <Route exact path='/pacientes/:id' component={PacienteDashBoard} />
                     <Route exact path='/pacientes/ficha_paciente/:id' component={FichaPaciente} />
                     <Route exact path='/pacientes/ficha_sesion/:id' component={FichaSesion} />
+                    <Route exact path='/pacientes/modificar_paciente/:id' component={ModificarPaciente} />
                     <Route exact path='/derivacion/:id' component={Derivacion} />
                     <Route exact path='/informes/area_comercial' component={AreaComercial} />
                     <Route exact path='/prueba' component={PruebaComponente}/>

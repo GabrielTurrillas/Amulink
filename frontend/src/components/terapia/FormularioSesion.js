@@ -7,19 +7,20 @@ import { agregarSesiones, fetchTerapia } from '../../redux/actions/terapiaAction
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const RegistrarSesion = () => {
+/* Containers 
+    RegistroSesion.js
+*/
+
+const FormularioSesion = () => {
     const { id:idPaciente } = useParams()
     const instanciaTerapia = useSelector(state => state.terapiaReducer.terapia)
     const {id:terapia} = instanciaTerapia
-    console.log('instanciaTerapia:',instanciaTerapia)
-    console.log('idTerapia:', terapia)
     const [fechaSesion, setFechaSesion] = useState(new Date())
     const [fechaPago, setFechaPago] = useState(new Date())
     const {register, handleSubmit, errors} = useForm();
     const dispatch = useDispatch();
     const onSubmit = (data) => {
         const body = {...data, terapia, fechaSesion, fechaPago};
-        console.log('body:',body)
         dispatch(agregarSesiones(body, idPaciente));
     };
     useEffect(() => {
@@ -28,13 +29,14 @@ const RegistrarSesion = () => {
     return (    
         <Fragment>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='row ml-2 mr-2'>
+                <div className='row'>
                     <div className='form-group col-6'>
                         <label htmlFor="fechaSesion" className='mr-3'>Fecha de Sesion</label>
                         <DatePicker
                             className='form-control' 
                             id='fechaSesion'
                             name='fechaSesion'  
+                            dateFormat='dd/MM/yyyy'
                             selected={fechaSesion}
                             onChange={date => setFechaSesion(date)}
                         />
@@ -50,7 +52,7 @@ const RegistrarSesion = () => {
                         <label htmlFor="asistio" className="ml-2">Asistio?</label>
                     </div>
                 </div>
-                <div className='row ml-2 mr-2'>
+                <div className='row'>
                     <div className='form-group col-6'>
                         <input
                             className='form-control' 
@@ -74,7 +76,7 @@ const RegistrarSesion = () => {
                         <label htmlFor="pago" className="ml-2">Pago?</label>
                     </div>
                 </div>
-                <div className='row ml-2 mr-2'>
+                <div className='row'>
                     <div className='form-group col-6'>
                         <textarea
                             className='form-control' 
@@ -91,15 +93,16 @@ const RegistrarSesion = () => {
                             className='form-control' 
                             id='fechaPago' 
                             name='fechaPago'
+                            dateFormat='dd/MM/yyyy'
                             selected={fechaPago}
                             onChange={date => setFechaPago(date)}
                         />
                     </div>
                 </div>
-                <button className='ml-4 btn btn-success' type='submit' to={'pacientes/'+idPaciente} >Registrar</button>
+                <button className='btn btn-success' type='submit' to={'pacientes/'+idPaciente} >Registrar</button>
             </form>
         </Fragment>
     );
-}
+};
 
-export default RegistrarSesion;
+export default FormularioSesion;

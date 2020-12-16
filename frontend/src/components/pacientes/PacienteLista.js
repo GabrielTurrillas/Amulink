@@ -4,6 +4,11 @@ import { fetchPacientes } from '../../redux/actions/pacientes';
 import { load_user } from '../../redux/actions/auth';
 import { Link } from 'react-router-dom';
 
+/* Containers
+    Pacientes.js
+    Home.js
+*/
+
 const PacienteLista = () => {
     const dispatch = useDispatch();
     const pacientes = useSelector(state => state.pacientesReducer.pacientes)
@@ -20,7 +25,7 @@ const PacienteLista = () => {
     }
     return (
         <Fragment>
-            <div className='card ml-4 mr-4'>
+            <div className='card'>
                 <table className="table table-hover">
                     <thead>
                         <tr>

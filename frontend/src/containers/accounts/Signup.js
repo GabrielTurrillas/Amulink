@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signup } from '../../redux/actions/auth'
@@ -33,7 +33,7 @@ const Signup = ({ signup, isAuthenticated }) => {
     
 
     return (
-        <div className='container mt-5'>
+        <Fragment>
             <h1>Sign Up</h1>
             <p>Create your Account</p>
             <form onSubmit={e => onSubmit(e)}>
@@ -88,7 +88,7 @@ const Signup = ({ signup, isAuthenticated }) => {
             <p className='mt-3'>
                 Already have an account? <Link to='/login'>Sign In</Link>
             </p>
-        </div>
+        </Fragment>
     );
 };
 

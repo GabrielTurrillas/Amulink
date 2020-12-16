@@ -7,7 +7,9 @@ import {
     FETCH_TERAPIA_SUCCESS,
     FETCH_TERAPIA_FAILURE,
     FETCH_SESION_SUCCESS,
-    FETCH_SESION_FAILURE
+    FETCH_SESION_FAILURE,
+    PUT_SESION_FAILURE,
+    PUT_SESION_SUCCESS,
 } from './types';
 
 
@@ -80,6 +82,31 @@ export const fetchTerapia = (idPaciente) => async dispatch => {
             payload: err.data
         })
         console.log(err)
+    });
+};
+
+
+
+export const putSesion = (idSesion, body) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `JWT ${localStorage.getItem('access')}`,
+            'Accept': 'application/json'
+        }
+    };
+    axios.put(`api/terapia/sesion/put_sesion/${idSesion}`, body, config)
+    .then(res => {
+        dispatch({
+            type: PUT_SESION_SUCCESS,
+            payload: res.data
+        });
+    })
+    .catch(err => {
+        dispatch({
+            type: PUT_SESION_FAILURE,
+            payload: err.data
+        });
     });
 };
 

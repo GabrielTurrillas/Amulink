@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../redux/actions/auth';
+import './css/Nav.css';
 
 const Nav = ({ logout, isAuthenticated }) => {
     const guestLinks = () => (
@@ -31,7 +32,7 @@ const Nav = ({ logout, isAuthenticated }) => {
 
 
     return (
-        <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+        <nav className='navbar navbar-expand-lg navbar-light bg-light sticky-top'>
             <Link className='navbar-brand' to='/'>Amülink</Link>
             <button 
                 className='navbar-toggler' 
@@ -54,7 +55,7 @@ const Nav = ({ logout, isAuthenticated }) => {
             </div>
         </nav>
     )
-}
+};
 
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
