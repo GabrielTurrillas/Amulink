@@ -1,22 +1,38 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Sidebar.css';
 import TotalHorasAtendidas from '../informes/TotalHorasAtendidas';
 import * as RiIcons  from "react-icons/ri";
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+
 
 
 const Sidebar = () => {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+    const [sidebar, setSidebar] = useState(false)
+
+    const showSidebar = () => setSidebar(!sidebar)
     const guestNav = () => (
         <></>
     )
 
     const authNav = () => (
         <Fragment>
-            <nav className='nav-menu'>
-                <ul className='nav-menu-items'>
+            <div className='navbar'>
+                <Link to='#' className='menu-bars'>
+                    <FaIcons.FaBars onClick={showSidebar}/>
+                </Link>
+            </div>
+            <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+                <ul className='nav-menu-items' onClick={showSidebar}>
+                    <li className="navbar-toggle">
+                        <Link to="#" className='menu-bars'>
+                            <AiIcons.AiOutlineClose />
+                        </Link>
+                    </li>
                     {SidebarData.map((item, index) => {
                         return (
                             <li key={index} className={item.cName}>

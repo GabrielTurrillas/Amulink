@@ -5,6 +5,22 @@
     display: flex;
     justify-content:center;
     position:fixed;
+    left:-100%;
+    transition: 850ms;
+    -webkit-transition: 850ms;
+    -moz-transition: 850ms;
+    -ms-transition: 850ms;
+    -o-transition: 850ms;
+}
+
+.nav-menu.active {
+    left:0;
+    transition: 350ms;
+    z-index: 1;
+    -webkit-transition: 350ms;
+    -moz-transition: 350ms;
+    -ms-transition: 350ms;
+    -o-transition: 350ms;
 }
 
 .nav-text {

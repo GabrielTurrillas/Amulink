@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../redux/actions/auth';
-import './css/Nav.css';
 
 const Nav = ({ logout, isAuthenticated }) => {
     const guestLinks = () => (
